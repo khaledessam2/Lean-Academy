@@ -1,19 +1,17 @@
 <section id="overview" class="relative bg-cream py-24">
   <div class="container-page">
     <div appReveal class="mx-auto max-w-3xl text-center">
-      <span class="text-sm font-bold uppercase tracking-wider text-brand-600">نظرة عامة على النظام</span>
+      <span class="text-sm font-bold uppercase tracking-wider text-brand-600">{{ c().eyebrow }}</span>
       <h2 class="mt-3 font-display text-3xl font-extrabold text-navy-700 sm:text-4xl">
-        منصة واحدة لكل أنماط التعلّم والتدريب
+        {{ c().title }}
       </h2>
       <p class="mt-5 text-lg leading-relaxed text-navy-600">
-        نظام «لين أكاديمي» يجمع بين إنشاء الدورات بأنماطها المتعددة، والفصول التفاعلية،
-        والشهادات الإلكترونية، والتقييمات الذكية، مع إدارة شاملة للمستخدمين والمراكز التدريبية
-        عبر لوحة تحكم مرنة وتجربة استخدام سلسة على جميع الأجهزة.
+        {{ c().intro }}
       </p>
     </div>
 
     <div class="mt-16 grid gap-6 md:grid-cols-3">
-      @for (m of modes; track m.en; let i = $index) {
+      @for (m of c().modes; track m.en; let i = $index) {
         <div [appReveal]="i" class="group relative overflow-hidden rounded-3xl bg-white p-8 shadow-[0_20px_60px_-30px_rgba(14,46,68,0.25)] ring-1 ring-cream-deep transition-all hover:-translate-y-1.5">
           <div class="absolute -left-10 -top-10 h-28 w-28 rounded-full bg-brand-50 transition-transform group-hover:scale-150"></div>
           <div class="relative">
@@ -41,10 +39,9 @@
           <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15l-1.9-4.1L5.5 9l4.6-1.4L12 3zM6 16l.9 2.1L9 19l-2.1.9L6 22l-.9-2.1L3 19l2.1-.9L6 16zM18 14l.9 2.1L21 17l-2.1.9L18 20l-.9-2.1L15 17l2.1-.9L18 14z"/></svg>
         </span>
         <div class="flex-1">
-          <h3 class="font-display text-xl font-extrabold text-white">مدعوم بالذكاء الاصطناعي</h3>
+          <h3 class="font-display text-xl font-extrabold text-white">{{ c().aiTitle }}</h3>
           <p class="mt-2 leading-relaxed text-white/90">
-            نستخدم أحدث أدوات الذكاء الاصطناعي في تعزيز التفاعل بين المتدرب والمحتوى التعليمي،
-            وإعداد الخطط والحقائب التدريبية، وتحليل الأداء وقياس المخرجات.
+            {{ c().aiText }}
           </p>
         </div>
       </div>

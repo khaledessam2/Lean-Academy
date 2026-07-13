@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LogoComponent } from '../logo/logo';
-import { FooterService } from '../../services/footer.service';
+import { ContentStore } from '../../content/content-store';
 
 @Component({
   selector: 'app-footer',
@@ -10,9 +10,8 @@ import { FooterService } from '../../services/footer.service';
   templateUrl: './footer.html',
 })
 export class FooterComponent {
-  private readonly footer = inject(FooterService);
+  private readonly store = inject(ContentStore);
 
-  protected readonly year = this.footer.year;
-  protected readonly socials = this.footer.socials;
-  protected readonly columns = this.footer.columns;
+  /** محتوى التذييل. */
+  protected readonly c = computed(() => this.store.content().footer);
 }

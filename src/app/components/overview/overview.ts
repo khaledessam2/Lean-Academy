@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
-import { OverviewService } from '../../services/overview.service';
+import { Component, computed, inject } from '@angular/core';
 import { RevealDirective } from '../../directives/reveal.directive';
+import { ContentStore } from '../../content/content-store';
 
 @Component({
   selector: 'app-overview',
@@ -9,6 +9,8 @@ import { RevealDirective } from '../../directives/reveal.directive';
   templateUrl: './overview.html',
 })
 export class OverviewComponent {
-  private readonly overview = inject(OverviewService);
-  protected readonly modes = this.overview.modes;
+  private readonly store = inject(ContentStore);
+
+  /** محتوى قسم النظرة العامة. */
+  protected readonly c = computed(() => this.store.content().overview);
 }

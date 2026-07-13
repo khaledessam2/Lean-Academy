@@ -2,13 +2,7 @@ import { Injectable } from '@angular/core';
 import emailjs from '@emailjs/browser';
 import { environment } from '../../environments/environment';
 
-export type ContactType = 'web' | 'mail' | 'phone';
-
-export interface ContactItem {
-  type: ContactType;
-  label: string;
-  value: string;
-}
+export type { ContactType, ContactItem } from '../content/site-content';
 
 export interface ContactRequest {
   name: string;
@@ -18,29 +12,9 @@ export interface ContactRequest {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ContactService {
-
-  readonly contacts: ContactItem[] = [
-    {
-      type: 'web',
-      label: 'الموقع الإلكتروني',
-      value: 'leansolutions.com.sa'
-    },
-    {
-      type: 'mail',
-      label: 'البريد الإلكتروني',
-      value: 'khaledessam3000@gmail.com'
-    },
-    {
-      type: 'phone',
-      label: 'خدمة العملاء',
-      value: '٩٢٠ ٠٠٠ ٠٠٠'
-    },
-  ];
-
-
   submit(request: ContactRequest): Promise<void> {
     const { serviceId, templateId, publicKey } = environment.emailjs;
 

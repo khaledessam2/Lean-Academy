@@ -1,9 +1,7 @@
 import { Component, input } from '@angular/core';
+import { IconName } from '../../content/site-content';
 
-export type IconName =
-  | 'courses' | 'video' | 'user-dash' | 'quiz' | 'certificate' | 'survey'
-  | 'admin' | 'institute' | 'transfer' | 'devices' | 'users' | 'workflow'
-  | 'chat' | 'report' | 'shield' | 'trophy' | 'chart' | 'bookmark' | 'play' | 'star';
+export type { IconName };
 
 @Component({
   selector: 'app-icon',

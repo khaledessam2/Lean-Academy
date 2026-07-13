@@ -1,8 +1,9 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { Plan, PricingService } from '../../services/pricing.service';
 import { RevealDirective } from '../../directives/reveal.directive';
+import { ContentStore } from '../../content/content-store';
+import { Plan } from '../../content/site-content';
 
 @Component({
   selector: 'app-pricing',
@@ -11,13 +12,16 @@ import { RevealDirective } from '../../directives/reveal.directive';
   templateUrl: './pricing.html',
 })
 export class PricingComponent {
-  private readonly pricing = inject(PricingService);
+  private readonly store = inject(ContentStore);
+
+  /** محتوى قسم الباقات. */
+  protected readonly c = computed(() => this.store.content().pricing);
 
   readonly showHeader = input(true);
   protected readonly annual = signal(false);
-  protected readonly plans = this.pricing.plans;
 
+  /** سعر الباقة حسب دورة الفوترة المختارة. */
   protected price(p: Plan): number | null {
-    return this.pricing.price(p, this.annual());
+    return this.annual() ? p.annual : p.monthly;
   }
 }

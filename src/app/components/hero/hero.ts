@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ContentStore } from '../../content/content-store';
 
 @Component({
   selector: 'app-hero',
@@ -7,4 +8,9 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   templateUrl: './hero.html',
 })
-export class HeroComponent {}
+export class HeroComponent {
+  private readonly store = inject(ContentStore);
+
+  /** محتوى الواجهة الرئيسية. */
+  protected readonly c = computed(() => this.store.content().hero);
+}

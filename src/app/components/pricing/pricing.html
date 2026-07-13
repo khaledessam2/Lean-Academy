@@ -3,12 +3,12 @@
   <div class="container-page relative">
     <div appReveal class="mx-auto max-w-3xl text-center">
       @if (showHeader()) {
-        <span class="text-sm font-bold uppercase tracking-wider text-brand-600">الباقات والأسعار</span>
+        <span class="text-sm font-bold uppercase tracking-wider text-brand-600">{{ c().eyebrow }}</span>
         <h2 class="mt-3 font-display text-3xl font-extrabold text-navy-700 sm:text-4xl">
-          باقات مرنة تناسب كل مؤسسة
+          {{ c().title }}
         </h2>
         <p class="mt-5 text-lg leading-relaxed text-navy-600">
-          ابدأ بما يناسب حجمك اليوم، وارتقِ متى شئت. جميع الباقات تشمل الدعم الفني والتحديثات المستمرة.
+          {{ c().intro }}
         </p>
       }
 
@@ -17,19 +17,19 @@
         <button type="button" (click)="annual.set(false)"
           class="rounded-full px-5 py-2 text-sm font-bold transition-all"
           [class]="!annual() ? 'bg-brand-500 text-white' : 'text-navy-600'">
-          شهرياً
+          {{ c().monthlyLabel }}
         </button>
         <button type="button" (click)="annual.set(true)"
           class="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-bold transition-all"
           [class]="annual() ? 'bg-brand-500 text-white' : 'text-navy-600'">
-          سنوياً
-          <span class="rounded-full bg-brand-500 px-2 py-0.5 text-[0.65rem] text-white">وفّر ٢٠٪</span>
+          {{ c().annualLabel }}
+          <span class="rounded-full bg-brand-500 px-2 py-0.5 text-[0.65rem] text-white">{{ c().saveBadge }}</span>
         </button>
       </div>
     </div>
 
     <div appReveal class="mt-14 grid items-stretch gap-6 lg:grid-cols-3">
-      @for (p of plans; track p.name) {
+      @for (p of c().plans; track p.name) {
         <div class="relative flex flex-col rounded-3xl p-8 transition-all"
           [class]="p.featured
             ? 'bg-brand-500 text-white shadow-2xl shadow-brand-500/30 lg:-translate-y-4 ring-1 ring-brand-400'
@@ -37,7 +37,7 @@
 
           @if (p.featured) {
             <span class="absolute -top-3 right-8 rounded-full bg-white px-4 py-1 text-xs font-bold text-brand-600 shadow-lg">
-              الأكثر شيوعاً
+              {{ c().featuredBadge }}
             </span>
           }
 
@@ -48,10 +48,10 @@
             @if (price(p) !== null) {
               <span class="font-display text-4xl font-extrabold">{{ price(p) | number }}</span>
               <span class="pb-1 text-sm" [class]="p.featured ? 'text-white/85' : 'text-navy-500'">
-                ر.س / {{ annual() ? 'سنوياً' : 'شهرياً' }}
+                {{ annual() ? c().perYear : c().perMonth }}
               </span>
             } @else {
-              <span class="font-display text-3xl font-extrabold">حسب الطلب</span>
+              <span class="font-display text-3xl font-extrabold">{{ c().customPrice }}</span>
             }
           </div>
 
@@ -79,9 +79,9 @@
     </div>
 
     <p class="mt-10 text-center text-sm text-navy-500">
-      هل تحتاج تكاملاً خاصاً أو استضافة داخلية؟
-      <a [routerLink]="['/pricing']" fragment="contact" class="font-bold text-brand-600 hover:underline">تواصل مع فريق المبيعات</a>
-      للحصول على عرض مخصّص.
+      {{ c().footnotePre }}
+      <a [routerLink]="['/pricing']" fragment="contact" class="font-bold text-brand-600 hover:underline">{{ c().footnoteLink }}</a>
+      {{ c().footnotePost }}
     </p>
   </div>
 </section>

@@ -1,8 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LogoComponent } from '../logo/logo';
 import { ContactService } from '../../services/contact.service';
 import { RevealDirective } from '../../directives/reveal.directive';
+import { ContentStore } from '../../content/content-store';
 
 @Component({
   selector: 'app-contact',
@@ -12,9 +13,11 @@ import { RevealDirective } from '../../directives/reveal.directive';
 })
 export class ContactComponent {
   private readonly contactService = inject(ContactService);
+  private readonly store = inject(ContentStore);
   private readonly fb = inject(FormBuilder);
 
-  protected readonly contacts = this.contactService.contacts;
+  /** محتوى قسم التواصل. */
+  protected readonly c = computed(() => this.store.content().contact);
   protected readonly submitted = signal(false);
   protected readonly sending = signal(false);
   protected readonly errorMessage = signal('');

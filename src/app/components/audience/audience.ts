@@ -1,7 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { IconComponent } from '../icon/icon';
 import { RevealDirective } from '../../directives/reveal.directive';
-import { AudienceService } from '../../services/audience.service';
+import { ContentStore } from '../../content/content-store';
 
 @Component({
   selector: 'app-audience',
@@ -10,12 +10,14 @@ import { AudienceService } from '../../services/audience.service';
   templateUrl: './audience.html',
 })
 export class AudienceComponent {
-  private readonly audience = inject(AudienceService);
+  private readonly store = inject(ContentStore);
 
-  protected readonly roles = this.audience.roles;
+  /** محتوى قسم المستخدمين. */
+  protected readonly c = computed(() => this.store.content().audience);
   protected readonly active = signal('trainee');
 
-  protected readonly current = computed(
-    () => this.roles.find((r) => r.key === this.active()) ?? this.roles[0],
-  );
+  protected readonly current = computed(() => {
+    const roles = this.c().roles;
+    return roles.find((r) => r.key === this.active()) ?? roles[0];
+  });
 }

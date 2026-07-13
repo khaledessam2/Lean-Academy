@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
-import { IconName } from '../components/icon/icon';
+import { IconName } from './icon.model';
+
+/** قسم الجمهور / الأدوار (تبويبات المستخدمين). */
 
 export interface Role {
+  /** معرّف الدور (يُستخدم داخلياً للتبويبات) */
   key: string;
   label: string;
   icon: IconName;
@@ -10,9 +12,16 @@ export interface Role {
   points: string[];
 }
 
-@Injectable({ providedIn: 'root' })
-export class AudienceService {
-  readonly roles: Role[] = [
+export interface AudienceContent {
+  eyebrow: string;
+  title: string;
+  roles: Role[];
+}
+
+export const AUDIENCE_DEFAULT: AudienceContent = {
+  eyebrow: 'تجربة مصمّمة لكل مستخدم',
+  title: 'واجهات وأدوار مخصّصة حسب الاحتياج',
+  roles: [
     {
       key: 'trainee', label: 'المتدرب', icon: 'user-dash',
       headline: 'رحلة تعلّم متكاملة للمتدرب',
@@ -61,5 +70,5 @@ export class AudienceService {
         'طرح الدورات والترشيح والموافقات الإلكترونية',
       ],
     },
-  ];
-}
+  ],
+};

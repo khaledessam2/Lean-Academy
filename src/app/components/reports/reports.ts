@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
-import { ReportsService } from '../../services/reports.service';
+import { Component, computed, inject } from '@angular/core';
 import { RevealDirective } from '../../directives/reveal.directive';
+import { ContentStore } from '../../content/content-store';
 
 @Component({
   selector: 'app-reports',
@@ -9,8 +9,8 @@ import { RevealDirective } from '../../directives/reveal.directive';
   templateUrl: './reports.html',
 })
 export class ReportsComponent {
-  private readonly reportsService = inject(ReportsService);
+  private readonly store = inject(ContentStore);
 
-  protected readonly bars = this.reportsService.bars;
-  protected readonly reports = this.reportsService.reports;
+  /** محتوى قسم التقارير. */
+  protected readonly c = computed(() => this.store.content().reports);
 }

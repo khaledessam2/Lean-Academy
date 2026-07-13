@@ -15,15 +15,15 @@
       <app-logo mark="#ed7d31" textClass="text-navy-700" />
 
       <h2 class="mt-6 font-display text-3xl font-extrabold text-navy-700 sm:text-4xl">
-        جاهز لتمكين النمو في مؤسستك؟
+        {{ c().title }}
       </h2>
 
       <p class="mt-5 max-w-md text-lg leading-relaxed text-navy-600">
-        احجز عرضاً تجريبياً مجانياً وسيتواصل معك فريقنا لتصميم الحل الأنسب لاحتياجات جهتك.
+        {{ c().intro }}
       </p>
 
       <ul class="mt-8 space-y-4">
-        @for (item of contacts; track item.label) {
+        @for (item of c().contacts; track item.label) {
           <li class="flex items-center gap-4">
             <span
               class="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600 ring-1 ring-cream-deep"
@@ -79,12 +79,12 @@
         <form [formGroup]="contactForm" (ngSubmit)="submit()" class="space-y-4">
           <div class="grid gap-4 sm:grid-cols-2">
             <label class="block">
-              <span class="mb-1.5 block text-sm font-semibold text-navy-700"> الاسم الكامل </span>
+              <span class="mb-1.5 block text-sm font-semibold text-navy-700"> {{ c().nameLabel }} </span>
 
               <input
                 formControlName="name"
                 type="text"
-                placeholder="أدخل اسمك"
+                [placeholder]="c().namePlaceholder"
                 class="w-full rounded-xl border border-cream-deep bg-white px-4 py-3 text-navy-700 outline-none transition-all focus:border-brand-400 focus:ring-2 focus:ring-brand-200"
               />
 
@@ -94,12 +94,12 @@
             </label>
 
             <label class="block">
-              <span class="mb-1.5 block text-sm font-semibold text-navy-700"> جهة العمل </span>
+              <span class="mb-1.5 block text-sm font-semibold text-navy-700"> {{ c().orgLabel }} </span>
 
               <input
                 formControlName="organization"
                 type="text"
-                placeholder="اسم المؤسسة"
+                [placeholder]="c().orgPlaceholder"
                 class="w-full rounded-xl border border-cream-deep bg-white px-4 py-3 text-navy-700 outline-none transition-all focus:border-brand-400 focus:ring-2 focus:ring-brand-200"
               />
             </label>
@@ -107,13 +107,13 @@
 
           <label class="block">
             <span class="mb-1.5 block text-sm font-semibold text-navy-700">
-              البريد الإلكتروني
+              {{ c().emailLabel }}
             </span>
 
             <input
               formControlName="email"
               type="email"
-              placeholder="name@example.com"
+              [placeholder]="c().emailPlaceholder"
               class="w-full rounded-xl border border-cream-deep bg-white px-4 py-3 text-navy-700 outline-none transition-all focus:border-brand-400 focus:ring-2 focus:ring-brand-200"
             />
 
@@ -124,13 +124,13 @@
 
           <label class="block">
             <span class="mb-1.5 block text-sm font-semibold text-navy-700">
-              كيف يمكننا مساعدتك؟
+              {{ c().messageLabel }}
             </span>
 
             <textarea
               formControlName="message"
               rows="4"
-              placeholder="اكتب رسالتك هنا…"
+              [placeholder]="c().messagePlaceholder"
               class="w-full resize-none rounded-xl border border-cream-deep bg-white px-4 py-3 text-navy-700 outline-none transition-all focus:border-brand-400 focus:ring-2 focus:ring-brand-200"
             >
             </textarea>
@@ -141,7 +141,7 @@
             [disabled]="sending()"
             class="w-full rounded-full bg-brand-500 px-6 py-4 font-bold text-white shadow-lg shadow-brand-500/30 transition-all hover:-translate-y-0.5 hover:bg-brand-600 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
           >
-            {{ sending() ? 'جارٍ الإرسال…' : 'إرسال الطلب' }}
+            {{ sending() ? c().sendingLabel : c().submitLabel }}
           </button>
 
           @if (errorMessage()) {
@@ -151,7 +151,7 @@
           }
 
           <p class="text-center text-xs text-navy-500">
-            بإرسالك الطلب فأنت توافق على سياسة الخصوصية.
+            {{ c().privacyNote }}
           </p>
         </form>
       } @else {
@@ -171,17 +171,17 @@
           </span>
 
           <h3 class="mt-5 font-display text-xl font-extrabold text-navy-700">
-            تم استلام طلبك بنجاح!
+            {{ c().successTitle }}
           </h3>
 
-          <p class="mt-2 text-navy-600">سيتواصل معك فريق لين أكاديمي في أقرب وقت.</p>
+          <p class="mt-2 text-navy-600">{{ c().successText }}</p>
 
           <button
             type="button"
             (click)="submitted.set(false)"
             class="mt-6 rounded-full border border-cream-deep px-6 py-2.5 text-sm font-semibold text-navy-700 hover:bg-cream"
           >
-            إرسال طلب آخر
+            {{ c().successAgain }}
           </button>
         </div>
       }

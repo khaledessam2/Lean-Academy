@@ -1,16 +1,27 @@
-import { Injectable } from '@angular/core';
-import { IconName } from '../components/icon/icon';
+import { IconName } from './icon.model';
+
+/** قسم المميزات الأساسية. */
 
 export interface Feature {
+  /** رقم الميزة (يظهر كبطاقة رقمية) */
   no: string;
   title: string;
   desc: string;
   icon: IconName;
 }
 
-@Injectable({ providedIn: 'root' })
-export class FeaturesService {
-  readonly features: Feature[] = [
+export interface FeaturesContent {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  items: Feature[];
+}
+
+export const FEATURES_DEFAULT: FeaturesContent = {
+  eyebrow: 'المميزات الأساسية',
+  title: 'كل ما تحتاجه إدارة تدريب حديثة',
+  intro: 'من إنشاء الدورات إلى إصدار الشهادات وتحليل الأداء — منظومة متكاملة في مكان واحد.',
+  items: [
     { no: '01', icon: 'courses', title: 'إدارة متكاملة للدورات', desc: 'إنشاء دورات تعليمية (ذاتي – مباشر – حضوري) مع آلية إلكترونية للترشيح والموافقة.' },
     { no: '02', icon: 'video', title: 'فصول افتراضية تفاعلية', desc: 'بث مباشر مع مشاركة الشاشة، السبورة البيضاء، إرسال الملفات، والمحادثات الفورية.' },
     { no: '03', icon: 'user-dash', title: 'لوحة تحكم للمتدرب', desc: 'عرض الدورات المسجّلة، متابعة التقدّم، وطباعة الشهادات، مدعومة بالذكاء الاصطناعي.' },
@@ -23,5 +34,5 @@ export class FeaturesService {
     { no: '10', icon: 'devices', title: 'واجهة استخدام سهلة', desc: 'تصميم بسيط ومتجاوب مع أجهزة الكمبيوتر والهواتف الذكية.' },
     { no: '11', icon: 'users', title: 'إدارة شاملة للمستخدمين', desc: 'إدارة الأدوار والصلاحيات والبيانات لكل من المتدربين والمدربين والإدارة.' },
     { no: '12', icon: 'workflow', title: 'محرّك مسارات العمل', desc: 'إدارة مسارات الترشيح والموافقات بمرونة عبر Workflow Engine قابل للتعديل.' },
-  ];
-}
+  ],
+};

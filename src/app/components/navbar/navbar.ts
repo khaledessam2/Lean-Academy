@@ -1,7 +1,7 @@
-import { Component, HostListener, inject, signal } from '@angular/core';
+import { Component, HostListener, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LogoComponent } from '../logo/logo';
-import { NavbarService } from '../../services/navbar.service';
+import { ContentStore } from '../../content/content-store';
 
 @Component({
   selector: 'app-navbar',
@@ -10,9 +10,10 @@ import { NavbarService } from '../../services/navbar.service';
   templateUrl: './navbar.html',
 })
 export class NavbarComponent {
-  private readonly navbar = inject(NavbarService);
+  private readonly store = inject(ContentStore);
 
-  protected readonly links = this.navbar.links;
+  /** محتوى شريط التنقّل. */
+  protected readonly c = computed(() => this.store.content().navbar);
   protected readonly menuOpen = signal(false);
   protected readonly scrolled = signal(false);
 

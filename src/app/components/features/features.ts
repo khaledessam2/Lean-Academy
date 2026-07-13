@@ -1,7 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { IconComponent } from '../icon/icon';
-import { FeaturesService } from '../../services/features.service';
 import { RevealDirective } from '../../directives/reveal.directive';
+import { ContentStore } from '../../content/content-store';
 
 @Component({
   selector: 'app-features',
@@ -10,13 +10,17 @@ import { RevealDirective } from '../../directives/reveal.directive';
   templateUrl: './features.html',
 })
 export class FeaturesComponent {
-  private readonly featuresService = inject(FeaturesService);
+  private readonly store = inject(ContentStore);
+
+  /** محتوى قسم المميزات. */
+  protected readonly c = computed(() => this.store.content().features);
 
   private readonly pageSize = 6;
   protected readonly page = signal(1);
-  protected readonly features = this.featuresService.features;
 
-  protected readonly totalPages = computed(() => Math.ceil(this.features.length / this.pageSize));
+  protected readonly totalPages = computed(() =>
+    Math.ceil(this.c().items.length / this.pageSize),
+  );
 
   protected readonly pages = computed(() =>
     Array.from({ length: this.totalPages() }, (_, i) => i + 1),
@@ -24,7 +28,7 @@ export class FeaturesComponent {
 
   protected readonly pagedFeatures = computed(() => {
     const start = (this.page() - 1) * this.pageSize;
-    return this.features.slice(start, start + this.pageSize);
+    return this.c().items.slice(start, start + this.pageSize);
   });
 
   protected setPage(p: number): void {

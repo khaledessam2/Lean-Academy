@@ -11,7 +11,7 @@
 
     <!-- desktop links -->
     <ul class="hidden lg:flex items-center gap-8 text-[0.95rem] font-medium text-navy-700">
-      @for (link of links; track link.label) {
+      @for (link of c().links; track link.label) {
         <li>
           <a [routerLink]="[link.route]" [fragment]="link.fragment"
              class="relative py-1 transition-colors hover:text-brand-500 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-right after:scale-x-0 after:bg-brand-500 after:transition-transform hover:after:scale-x-100">
@@ -24,7 +24,7 @@
     <div class="hidden lg:flex items-center gap-3">
       <a [routerLink]="['/']" fragment="contact"
          class="rounded-full bg-brand-500 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand-500/25 transition-all hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-brand-500/40">
-        اطلب عرضاً تجريبياً
+        {{ c().cta }}
       </a>
     </div>
 
@@ -49,7 +49,7 @@
     <div class="lg:hidden container-page mt-3 animate-fade-up">
       <div class="rounded-3xl border border-cream-deep bg-white p-5 shadow-xl">
         <ul class="flex flex-col gap-1 text-navy-700">
-          @for (link of links; track link.label) {
+          @for (link of c().links; track link.label) {
             <li>
               <a [routerLink]="[link.route]" [fragment]="link.fragment" (click)="menuOpen.set(false)"
                  class="block rounded-xl px-4 py-3 font-medium transition-colors hover:bg-cream hover:text-brand-600">
@@ -61,7 +61,7 @@
         <div class="mt-4">
           <a [routerLink]="['/']" fragment="contact" (click)="menuOpen.set(false)"
              class="block rounded-full bg-brand-500 px-6 py-3 text-center text-sm font-bold text-white">
-            اطلب عرضاً تجريبياً
+            {{ c().cta }}
           </a>
         </div>
       </div>

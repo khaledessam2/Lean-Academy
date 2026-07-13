@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/** تذييل الصفحة. */
 
 export interface FooterLink {
   label: string;
@@ -12,22 +12,38 @@ export interface FooterColumn {
 }
 
 export interface SocialLink {
+  /** اسم المنصة (يحدّد الأيقونة): Facebook / X / Instagram / LinkedIn */
   label: string;
   href: string;
 }
 
-@Injectable({ providedIn: 'root' })
-export class FooterService {
-  readonly year = 2026;
+export interface BottomLink {
+  label: string;
+  href: string;
+}
 
-  readonly socials: SocialLink[] = [
+export interface FooterContent {
+  /** النص التعريفي تحت الشعار */
+  blurb: string;
+  socials: SocialLink[];
+  columns: FooterColumn[];
+  /** نص حقوق النشر (بعد السنة) */
+  copyright: string;
+  /** السنة */
+  year: number;
+  /** روابط أسفل التذييل */
+  bottomLinks: BottomLink[];
+}
+
+export const FOOTER_DEFAULT: FooterContent = {
+  blurb: 'نظام لين الأكاديمي الإلكتروني — منصة متكاملة لتمكين النمو عبر التعليم والتدريب الذكي.',
+  socials: [
     { label: 'Facebook', href: '#' },
     { label: 'X', href: '#' },
     { label: 'Instagram', href: '#' },
     { label: 'LinkedIn', href: '#' },
-  ];
-
-  readonly columns: FooterColumn[] = [
+  ],
+  columns: [
     {
       title: 'المنصة',
       links: [
@@ -54,5 +70,11 @@ export class FooterService {
         { label: 'leansolutions.com.sa', route: '/' },
       ],
     },
-  ];
-}
+  ],
+  copyright: 'لين أكاديمي. جميع الحقوق محفوظة.',
+  year: 2026,
+  bottomLinks: [
+    { label: 'سياسة الخصوصية', href: '#' },
+    { label: 'الشروط والأحكام', href: '#' },
+  ],
+};

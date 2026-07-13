@@ -1,13 +1,22 @@
-import { Injectable } from '@angular/core';
+/** قسم الأسئلة الشائعة (يظهر في صفحة الباقات). */
 
 export interface Faq {
+  /** السؤال */
   q: string;
+  /** الإجابة */
   a: string;
 }
 
-@Injectable({ providedIn: 'root' })
-export class FaqService {
-  readonly faqs: Faq[] = [
+export interface FaqContent {
+  eyebrow: string;
+  title: string;
+  items: Faq[];
+}
+
+export const FAQ_DEFAULT: FaqContent = {
+  eyebrow: 'الأسئلة الشائعة',
+  title: 'كل ما تريد معرفته عن الباقات',
+  items: [
     {
       q: 'هل يمكنني تجربة المنصة قبل الاشتراك؟',
       a: 'نعم، نوفّر عرضاً تجريبياً مجانياً يتيح لك استكشاف كامل مزايا النظام قبل اتخاذ القرار. تواصل معنا لحجز موعد.',
@@ -28,5 +37,5 @@ export class FaqService {
       q: 'ما وسائل الدفع المتاحة؟',
       a: 'نوفّر الدفع الشهري والسنوي عبر التحويل البنكي والفواتير الرسمية المعتمدة للجهات الحكومية والخاصة.',
     },
-  ];
-}
+  ],
+};

@@ -1,18 +1,57 @@
-import { Injectable } from '@angular/core';
+/** قسم الباقات والأسعار. */
 
 export interface Plan {
   name: string;
   tagline: string;
+  /** السعر الشهري (null = حسب الطلب) */
   monthly: number | null;
+  /** السعر السنوي (null = حسب الطلب) */
   annual: number | null;
+  /** هل هي الباقة المميّزة */
   featured: boolean;
+  /** نص زر الدعوة للإجراء */
   cta: string;
   features: string[];
 }
 
-@Injectable({ providedIn: 'root' })
-export class PricingService {
-  readonly plans: Plan[] = [
+export interface PricingContent {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  monthlyLabel: string;
+  annualLabel: string;
+  /** شارة التوفير بجانب زر السنوي */
+  saveBadge: string;
+  /** شارة "الأكثر شيوعاً" على الباقة المميزة */
+  featuredBadge: string;
+  /** لاحقة السعر عند الاختيار السنوي */
+  perYear: string;
+  /** لاحقة السعر عند الاختيار الشهري */
+  perMonth: string;
+  /** نص السعر عند عدم وجود سعر */
+  customPrice: string;
+  footnotePre: string;
+  footnoteLink: string;
+  footnotePost: string;
+  plans: Plan[];
+}
+
+export const PRICING_DEFAULT: PricingContent = {
+  eyebrow: 'الباقات والأسعار',
+  title: 'باقات مرنة تناسب كل مؤسسة',
+  intro:
+    'ابدأ بما يناسب حجمك اليوم، وارتقِ متى شئت. جميع الباقات تشمل الدعم الفني والتحديثات المستمرة.',
+  monthlyLabel: 'شهرياً',
+  annualLabel: 'سنوياً',
+  saveBadge: 'وفّر ٢٠٪',
+  featuredBadge: 'الأكثر شيوعاً',
+  perYear: 'ر.س / سنوياً',
+  perMonth: 'ر.س / شهرياً',
+  customPrice: 'حسب الطلب',
+  footnotePre: 'هل تحتاج تكاملاً خاصاً أو استضافة داخلية؟',
+  footnoteLink: 'تواصل مع فريق المبيعات',
+  footnotePost: 'للحصول على عرض مخصّص.',
+  plans: [
     {
       name: 'الباقة الأساسية',
       tagline: 'للمراكز الناشئة والفرق الصغيرة',
@@ -63,10 +102,5 @@ export class PricingService {
         'تدريب ونقل معرفة للكوادر',
       ],
     },
-  ];
-
-  /** سعر الباقة حسب دورة الفوترة (سنوي أو شهري). */
-  price(plan: Plan, annual: boolean): number | null {
-    return annual ? plan.annual : plan.monthly;
-  }
-}
+  ],
+};

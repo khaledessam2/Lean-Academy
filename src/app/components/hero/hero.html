@@ -22,15 +22,15 @@
           class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-brand-600 shadow-sm ring-1 ring-brand-100"
         >
           <span class="node-pulse h-2 w-2 rounded-full bg-brand-400"></span>
-          نظام لين الأكاديمي الإلكتروني
+          {{ c().badge }}
         </span>
 
         <h1
           class="mx-auto mt-6 max-w-2xl font-display text-4xl font-extrabold leading-[1.15] text-navy-700 sm:text-5xl lg:mx-0 lg:text-6xl"
         >
-          تمكين النمو عبر
+          {{ c().titleLead }}
           <span class="relative whitespace-nowrap text-brand-600">
-            التعليم الذكي
+            {{ c().titleHighlight }}
             <svg
               class="absolute -bottom-2 right-0 h-3 w-full text-brand-500/70"
               viewBox="0 0 300 12"
@@ -48,9 +48,7 @@
         </h1>
 
         <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-navy-600 lg:mx-0">
-          منصة رقمية متكاملة لإدارة التعليم والتدريب الإلكتروني، مصمّمة لتلبية احتياجات المؤسسات
-          الحكومية والخاصة في تطوير كوادرها البشرية عبر التدريب الذاتي والمباشر والحضوري، مدعومة
-          بأحدث أدوات الذكاء الاصطناعي.
+          {{ c().paragraph }}
         </p>
 
         <div
@@ -60,14 +58,14 @@
             [routerLink]="['/pricing']"
             class="w-full rounded-full bg-brand-500 px-8 py-4 text-center font-bold text-white shadow-xl shadow-brand-500/30 transition-all hover:-translate-y-0.5 hover:bg-brand-600 sm:w-auto"
           >
-            اطّلع على الباقات
+            {{ c().primaryCta }}
           </a>
           <a
             [routerLink]="['/']"
             fragment="overview"
             class="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-4 font-semibold text-navy-700 shadow-sm ring-1 ring-cream-deep transition-all hover:-translate-y-0.5 hover:bg-cream sm:w-auto"
           >
-            اكتشف المنصة
+            {{ c().secondaryCta }}
             <svg
               class="h-5 w-5 transition-transform group-hover:-translate-x-1"
               fill="none"
@@ -80,7 +78,7 @@
           </a>
         </div>
 
-        <p class="mt-4 text-sm text-navy-500 lg:pr-1">جرّب المنصة الآن بدون إدخال بيانات الدفع.</p>
+        <p class="mt-4 text-sm text-navy-500 lg:pr-1">{{ c().note }}</p>
       </div>
 
       <!-- visual: team photo with floating UI cards -->
@@ -91,7 +89,7 @@
         <!-- main photo -->
         <div class="group relative overflow-hidden rounded-[2.75rem] bg-white p-2 shadow-[0_50px_120px_-45px_rgba(14,46,68,0.55)] ring-1 ring-white/70">
           <div class="relative overflow-hidden rounded-[2.4rem]">
-            <img src="Gemini_Generated_Image_prc66jprc66jprc6.png" alt="فريق يستخدم منصة لين أكاديمي"
+            <img [src]="c().image" alt="فريق يستخدم منصة لين أكاديمي"
               class="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-105" loading="eager"/>
             <!-- soft brand wash -->
             <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-900/25 via-transparent to-transparent"></div>
