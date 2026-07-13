@@ -16,7 +16,7 @@ import {
   mergeContent,
 } from './site-content';
 
-/** المفتاح الذي ننقل به المحتوى من السيرفر (SSR) إلى المتصفح لتفادي جلبه مرتين. */
+/** المفتاح الذي ننقل به المحتوى من السيرفر (SSR) إلى المتصفح لأول عرض فوري. */
 const CONTENT_STATE_KEY = makeStateKey<Partial<Record<SectionKey, unknown>>>('site-content');
 
 /**
@@ -38,18 +38,35 @@ export class ContentStore {
 
   /** يُستدعى مرة واحدة عند إقلاع التطبيق (APP_INITIALIZER). */
   async load(): Promise<void> {
-    // على المتصفح: لو السيرفر جلب المحتوى بالفعل، استخدمه بدون طلب جديد
-    if (this.transferState.hasKey(CONTENT_STATE_KEY)) {
+    const isServer = isPlatformServer(this.platformId);
+
+    // على المتصفح: اعرض فوراً ما جلبه السيرفر وقت البناء/الطلب (لتفادي وميض الافتراضي)
+    let seeded = false;
+    if (!isServer && this.transferState.hasKey(CONTENT_STATE_KEY)) {
       const cached = this.transferState.get(CONTENT_STATE_KEY, null);
       this.transferState.remove(CONTENT_STATE_KEY);
       if (cached) {
         this.content.set(mergeContent(cached));
-        return;
+        seeded = true;
       }
     }
 
     if (!this.isConfigured) return; // لا إعداد → إبقاء الافتراضي
 
+    const work = this.fetchAndApply(isServer);
+
+    // السيرفر: ننتظر النتيجة قبل عرض الصفحة (SSR).
+    // المتصفح: لو ما عندناش أي محتوى مبدئي ننتظر، وإلا نحدّث في الخلفية دون انتظار.
+    if (isServer || !seeded) {
+      await work;
+    } else {
+      // تحديث حيّ بعد فتح الصفحة — يضمن ظهور أحدث محتوى حتى على الموقع المرفوع (Prerendered)
+      work.catch(() => {});
+    }
+  }
+
+  /** يجلب المحتوى من Supabase ويطبّقه، ويحفظه في TransferState على السيرفر فقط. */
+  private async fetchAndApply(isServer: boolean): Promise<void> {
     try {
       const client = createClient(environment.supabase.url, environment.supabase.anonKey);
       const { data, error } = await client.from('site_content').select('section, data');
@@ -62,13 +79,12 @@ export class ContentStore {
 
       this.content.set(mergeContent(overrides));
 
-      // خزّن النتيجة لتنتقل إلى المتصفح مع صفحة الـ SSR
-      if (isPlatformServer(this.platformId)) {
+      if (isServer) {
         this.transferState.set(CONTENT_STATE_KEY, overrides);
       }
     } catch (err) {
-      // في حال أي خطأ، نُبقي المحتوى الافتراضي ولا نكسر الموقع
-      console.error('[ContentStore] تعذّر تحميل المحتوى من Supabase، سيتم استخدام الافتراضي:', err);
+      // في حال أي خطأ، نُبقي المحتوى الحالي (المحفوظ أو الافتراضي) ولا نكسر الموقع
+      console.error('[ContentStore] تعذّر تحميل المحتوى من Supabase:', err);
     }
   }
 }
