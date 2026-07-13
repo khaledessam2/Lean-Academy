@@ -1,0 +1,87 @@
+<section id="pricing" class="relative bg-cream py-24">
+  <div class="bg-dots absolute inset-0 opacity-60"></div>
+  <div class="container-page relative">
+    <div appReveal class="mx-auto max-w-3xl text-center">
+      @if (showHeader()) {
+        <span class="text-sm font-bold uppercase tracking-wider text-brand-600">الباقات والأسعار</span>
+        <h2 class="mt-3 font-display text-3xl font-extrabold text-navy-700 sm:text-4xl">
+          باقات مرنة تناسب كل مؤسسة
+        </h2>
+        <p class="mt-5 text-lg leading-relaxed text-navy-600">
+          ابدأ بما يناسب حجمك اليوم، وارتقِ متى شئت. جميع الباقات تشمل الدعم الفني والتحديثات المستمرة.
+        </p>
+      }
+
+      <!-- billing toggle -->
+      <div class="mt-8 inline-flex items-center gap-3 rounded-full bg-white p-1.5 shadow-sm ring-1 ring-cream-deep">
+        <button type="button" (click)="annual.set(false)"
+          class="rounded-full px-5 py-2 text-sm font-bold transition-all"
+          [class]="!annual() ? 'bg-brand-500 text-white' : 'text-navy-600'">
+          شهرياً
+        </button>
+        <button type="button" (click)="annual.set(true)"
+          class="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-bold transition-all"
+          [class]="annual() ? 'bg-brand-500 text-white' : 'text-navy-600'">
+          سنوياً
+          <span class="rounded-full bg-brand-500 px-2 py-0.5 text-[0.65rem] text-white">وفّر ٢٠٪</span>
+        </button>
+      </div>
+    </div>
+
+    <div appReveal class="mt-14 grid items-stretch gap-6 lg:grid-cols-3">
+      @for (p of plans; track p.name) {
+        <div class="relative flex flex-col rounded-3xl p-8 transition-all"
+          [class]="p.featured
+            ? 'bg-brand-500 text-white shadow-2xl shadow-brand-500/30 lg:-translate-y-4 ring-1 ring-brand-400'
+            : 'bg-white text-navy-700 ring-1 ring-cream-deep shadow-[0_20px_60px_-40px_rgba(14,46,68,0.4)]'">
+
+          @if (p.featured) {
+            <span class="absolute -top-3 right-8 rounded-full bg-white px-4 py-1 text-xs font-bold text-brand-600 shadow-lg">
+              الأكثر شيوعاً
+            </span>
+          }
+
+          <h3 class="font-display text-xl font-extrabold">{{ p.name }}</h3>
+          <p class="mt-1 text-sm" [class]="p.featured ? 'text-white/85' : 'text-navy-500'">{{ p.tagline }}</p>
+
+          <div class="mt-6 flex items-end gap-2">
+            @if (price(p) !== null) {
+              <span class="font-display text-4xl font-extrabold">{{ price(p) | number }}</span>
+              <span class="pb-1 text-sm" [class]="p.featured ? 'text-white/85' : 'text-navy-500'">
+                ر.س / {{ annual() ? 'سنوياً' : 'شهرياً' }}
+              </span>
+            } @else {
+              <span class="font-display text-3xl font-extrabold">حسب الطلب</span>
+            }
+          </div>
+
+          <a [routerLink]="['/pricing']" fragment="contact"
+             class="mt-6 block rounded-full px-6 py-3.5 text-center font-bold transition-all"
+             [class]="p.featured
+               ? 'bg-white text-brand-600 hover:bg-brand-50'
+               : 'bg-brand-500 text-white hover:bg-brand-600'">
+            {{ p.cta }}
+          </a>
+
+          <ul class="mt-8 space-y-3.5 text-sm">
+            @for (f of p.features; track f) {
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
+                  [class]="p.featured ? 'bg-white/25 text-white' : 'bg-brand-50 text-brand-600'">
+                  <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </span>
+                <span [class]="p.featured ? 'text-white/90' : 'text-navy-600'">{{ f }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+
+    <p class="mt-10 text-center text-sm text-navy-500">
+      هل تحتاج تكاملاً خاصاً أو استضافة داخلية؟
+      <a [routerLink]="['/pricing']" fragment="contact" class="font-bold text-brand-600 hover:underline">تواصل مع فريق المبيعات</a>
+      للحصول على عرض مخصّص.
+    </p>
+  </div>
+</section>

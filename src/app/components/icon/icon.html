@@ -1,0 +1,25 @@
+<svg [attr.class]="class()" fill="none" stroke="currentColor" stroke-width="1.7"
+     viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  @switch (name()) {
+    @case ('courses') { <path d="M4 5.5A2.5 2.5 0 016.5 3H20v14H6.5A2.5 2.5 0 004 19.5V5.5zM4 19.5A2.5 2.5 0 006.5 22H20"/><path d="M9 7h7M9 11h5"/> }
+    @case ('video') { <rect x="2.5" y="6" width="12" height="12" rx="2.5"/><path d="M14.5 10l5-3v10l-5-3"/> }
+    @case ('user-dash') { <rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 8h4M7 12h10M7 16h7"/> }
+    @case ('quiz') { <path d="M6 3h9l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12l2 2 3-3.5"/> }
+    @case ('certificate') { <circle cx="12" cy="9" r="5"/><path d="M9 13l-1.5 7L12 18l4.5 2L15 13"/> }
+    @case ('survey') { <path d="M9 5h6M5 5h.01M5 12h.01M5 19h.01"/><path d="M9 12h10M9 19h7"/> }
+    @case ('admin') { <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/> }
+    @case ('institute') { <path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/> }
+    @case ('transfer') { <path d="M4 7h11l-3-3M20 17H9l3 3"/> }
+    @case ('devices') { <rect x="2" y="4" width="14" height="10" rx="2"/><path d="M2 18h14M18 9h4v9h-4z"/> }
+    @case ('users') { <circle cx="9" cy="8" r="3"/><path d="M3 20v-1a5 5 0 015-5h2a5 5 0 015 5v1M16 5a3 3 0 010 6M18 20v-1a5 5 0 00-3-4.5"/> }
+    @case ('workflow') { <rect x="3" y="4" width="6" height="5" rx="1.5"/><rect x="15" y="15" width="6" height="5" rx="1.5"/><path d="M6 9v4a2 2 0 002 2h7"/> }
+    @case ('chat') { <path d="M4 5h16v11H8l-4 4V5z"/><path d="M8 9h8M8 12h5"/> }
+    @case ('report') { <rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 13v4M12 9v8M16 11v6"/> }
+    @case ('shield') { <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/> }
+    @case ('trophy') { <path d="M8 4h8v4a4 4 0 01-8 0V4zM8 6H5v1a3 3 0 003 3M16 6h3v1a3 3 0 01-3 3M10 15h4l1 5H9z"/> }
+    @case ('chart') { <path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/> }
+    @case ('bookmark') { <path d="M6 3h12v18l-6-4-6 4z"/> }
+    @case ('play') { <circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z"/> }
+    @case ('star') { <path d="M12 3l2.6 6.3L21 10l-5 4 1.6 7L12 17l-5.6 4L8 14l-5-4 6.4-.7z"/> }
+  }
+</svg>

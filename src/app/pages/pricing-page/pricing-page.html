@@ -1,0 +1,51 @@
+<!-- page hero -->
+<section class="relative overflow-hidden bg-gradient-to-b from-white to-cream pt-36 pb-20 lg:pt-44">
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand-200/40 blur-3xl"></div>
+    <div class="absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-teal/20 blur-3xl"></div>
+    <div class="bg-dots absolute inset-0 opacity-40"></div>
+  </div>
+  <div appReveal class="container-page relative text-center">
+    <span class="inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-1.5 text-sm font-semibold text-brand-700 ring-1 ring-brand-100">
+      <span class="h-2 w-2 rounded-full bg-brand-500"></span>
+      الباقات والأسعار
+    </span>
+    <h1 class="mx-auto mt-6 max-w-2xl font-display text-4xl font-extrabold leading-[1.2] text-navy-700 sm:text-5xl">
+      باقات مرنة تناسب كل مؤسسة
+    </h1>
+    <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-navy-600">
+      ابدأ بما يناسب حجمك اليوم، وارتقِ متى شئت. جميع الباقات تشمل الدعم الفني والتحديثات المستمرة.
+    </p>
+  </div>
+</section>
+
+<!-- pricing cards (header hidden — page has its own hero) -->
+<app-pricing [showHeader]="false" />
+
+<!-- FAQ -->
+<section class="bg-white py-24">
+  <div class="container-page">
+    <div appReveal class="mx-auto max-w-3xl text-center">
+      <span class="text-sm font-bold uppercase tracking-wider text-brand-600">الأسئلة الشائعة</span>
+      <h2 class="mt-3 font-display text-3xl font-extrabold text-navy-700 sm:text-4xl">
+        كل ما تريد معرفته عن الباقات
+      </h2>
+    </div>
+
+    <div appReveal class="mx-auto mt-12 max-w-3xl divide-y divide-cream-deep rounded-3xl border border-cream-deep bg-white">
+      @for (item of faqs; track item.q) {
+        <details class="group px-6 py-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-bold text-navy-700">
+            {{ item.q }}
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600 transition-transform group-open:rotate-45">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </summary>
+          <p class="mt-3 leading-relaxed text-navy-600">{{ item.a }}</p>
+        </details>
+      }
+    </div>
+  </div>
+</section>
+
+<app-contact />

@@ -1,0 +1,70 @@
+<header
+  class="fixed inset-x-0 top-0 z-50 border-b border-cream-deep bg-white/95 backdrop-blur-md transition-all duration-300"
+  [class]="scrolled()
+    ? 'py-2 shadow-[0_10px_40px_-20px_rgba(14,46,68,0.35)]'
+    : 'py-4 shadow-[0_2px_18px_-12px_rgba(14,46,68,0.25)]'"
+>
+  <nav class="container-page flex items-center justify-between gap-4">
+    <a [routerLink]="['/']" fragment="home" aria-label="لين أكاديمي">
+      <app-logo textClass="text-navy-700" />
+    </a>
+
+    <!-- desktop links -->
+    <ul class="hidden lg:flex items-center gap-8 text-[0.95rem] font-medium text-navy-700">
+      @for (link of links; track link.label) {
+        <li>
+          <a [routerLink]="[link.route]" [fragment]="link.fragment"
+             class="relative py-1 transition-colors hover:text-brand-500 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-right after:scale-x-0 after:bg-brand-500 after:transition-transform hover:after:scale-x-100">
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <div class="hidden lg:flex items-center gap-3">
+      <a [routerLink]="['/']" fragment="contact"
+         class="rounded-full bg-brand-500 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand-500/25 transition-all hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-brand-500/40">
+        اطلب عرضاً تجريبياً
+      </a>
+    </div>
+
+    <!-- mobile toggle -->
+    <button
+      type="button"
+      (click)="menuOpen.set(!menuOpen())"
+      class="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-xl bg-cream text-navy-700"
+      [attr.aria-expanded]="menuOpen()"
+      aria-label="القائمة"
+    >
+      @if (!menuOpen()) {
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      } @else {
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+      }
+    </button>
+  </nav>
+
+  <!-- mobile menu -->
+  @if (menuOpen()) {
+    <div class="lg:hidden container-page mt-3 animate-fade-up">
+      <div class="rounded-3xl border border-cream-deep bg-white p-5 shadow-xl">
+        <ul class="flex flex-col gap-1 text-navy-700">
+          @for (link of links; track link.label) {
+            <li>
+              <a [routerLink]="[link.route]" [fragment]="link.fragment" (click)="menuOpen.set(false)"
+                 class="block rounded-xl px-4 py-3 font-medium transition-colors hover:bg-cream hover:text-brand-600">
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+        <div class="mt-4">
+          <a [routerLink]="['/']" fragment="contact" (click)="menuOpen.set(false)"
+             class="block rounded-full bg-brand-500 px-6 py-3 text-center text-sm font-bold text-white">
+            اطلب عرضاً تجريبياً
+          </a>
+        </div>
+      </div>
+    </div>
+  }
+</header>

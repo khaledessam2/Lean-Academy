@@ -1,0 +1,12 @@
+<span class="inline-flex items-center gap-2 select-none" [class]="wrapperClass()">
+  <svg viewBox="0 0 40 44" fill="none" xmlns="http://www.w3.org/2000/svg"
+       class="h-9 w-auto shrink-0" aria-hidden="true">
+    <path d="M6 6c6.5 0 11 2.2 13.8 5.4V40C17 36.8 12.5 34.6 6 34.6V6Z"
+          [attr.fill]="mark()" />
+    <path d="M34 6c-6.5 0-11 2.2-13.8 5.4V40c2.8-3.2 7.3-5.4 13.8-5.4V6Z"
+          [attr.fill]="mark()" opacity="0.55" />
+  </svg>
+  <span class="leading-none font-display font-extrabold text-[1.35rem] tracking-tight" [class]="textClass()">
+    Lean<span [style.color]="mark()"> academy</span>
+  </span>
+</span>
