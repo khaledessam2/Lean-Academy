@@ -47,6 +47,13 @@ body {
   color: var(--color-navy-800);
 }
 
+/* Prevent horizontal scroll on mobile (decorative/floating elements can spill past the viewport) */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 /* Reusable page container */
 @utility container-page {
   width: 100%;
