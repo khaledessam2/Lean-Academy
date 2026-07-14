@@ -1,9 +1,9 @@
 import { IconName } from './icon.model';
 
-/** قسم الجمهور / الأدوار (تبويبات المستخدمين). */
+/** Audience / roles section (user tabs). */
 
 export interface Role {
-  /** معرّف الدور (يُستخدم داخلياً للتبويبات) */
+  /** Role identifier (used internally for tabs) */
   key: string;
   label: string;
   icon: IconName;

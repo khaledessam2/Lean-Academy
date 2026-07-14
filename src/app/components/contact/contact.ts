@@ -16,7 +16,7 @@ export class ContactComponent {
   private readonly store = inject(ContentStore);
   private readonly fb = inject(FormBuilder);
 
-  /** محتوى قسم التواصل. */
+  /** Contact section content. */
   protected readonly c = computed(() => this.store.content().contact);
   protected readonly submitted = signal(false);
   protected readonly sending = signal(false);

@@ -1,16 +1,16 @@
-/** شريط التنقّل العلوي. */
+/** Top navigation bar. */
 
 export interface NavLink {
   label: string;
-  /** المسار مثل "/" أو "/pricing" */
+  /** Path such as "/" or "/pricing" */
   route: string;
-  /** جزء الصفحة (اختياري) مثل "overview" */
+  /** Page fragment (optional) such as "overview" */
   fragment?: string;
 }
 
 export interface NavbarContent {
   links: NavLink[];
-  /** نص زر الدعوة في الشريط */
+  /** Text of the call-to-action button in the bar */
   cta: string;
 }
 

@@ -1,6 +1,15 @@
-# Lean
+# Lean Academy — الموقع العام
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+
+## المحتوى (CMS)
+
+محتوى الموقع (نصوص + صور) يُقرأ من Supabase عند الإقلاع، ولو مفيش تعديل يرجع
+للمحتوى الافتراضي المدمج في `src/app/content/`. مفاتيح Supabase في
+`src/environments/environment.ts`.
+
+التعديل يتم من **مشروع لوحة الأدمن المنفصل**: `../lean-admin` (على الـ Desktop)،
+وفيه دليل الإعداد الكامل وسكربت قاعدة البيانات.
 
 ## Development server
 

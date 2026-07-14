@@ -1,4 +1,4 @@
-/** تذييل الصفحة. */
+/** Page footer. */
 
 export interface FooterLink {
   label: string;
@@ -12,7 +12,7 @@ export interface FooterColumn {
 }
 
 export interface SocialLink {
-  /** اسم المنصة (يحدّد الأيقونة): Facebook / X / Instagram / LinkedIn */
+  /** Platform name (determines the icon): Facebook / X / Instagram / LinkedIn */
   label: string;
   href: string;
 }
@@ -23,15 +23,15 @@ export interface BottomLink {
 }
 
 export interface FooterContent {
-  /** النص التعريفي تحت الشعار */
+  /** Descriptive text below the logo */
   blurb: string;
   socials: SocialLink[];
   columns: FooterColumn[];
-  /** نص حقوق النشر (بعد السنة) */
+  /** Copyright text (after the year) */
   copyright: string;
-  /** السنة */
+  /** Year */
   year: number;
-  /** روابط أسفل التذييل */
+  /** Links at the bottom of the footer */
   bottomLinks: BottomLink[];
 }
 

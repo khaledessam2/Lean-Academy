@@ -12,6 +12,6 @@ import { ContentStore } from '../../content/content-store';
 export class FooterComponent {
   private readonly store = inject(ContentStore);
 
-  /** محتوى التذييل. */
+  /** Footer content. */
   protected readonly c = computed(() => this.store.content().footer);
 }

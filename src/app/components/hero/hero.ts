@@ -11,6 +11,6 @@ import { ContentStore } from '../../content/content-store';
 export class HeroComponent {
   private readonly store = inject(ContentStore);
 
-  /** محتوى الواجهة الرئيسية. */
+  /** Hero section content. */
   protected readonly c = computed(() => this.store.content().hero);
 }

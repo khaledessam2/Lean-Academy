@@ -12,7 +12,7 @@ import { ContentStore } from '../../content/content-store';
 export class FeaturesComponent {
   private readonly store = inject(ContentStore);
 
-  /** محتوى قسم المميزات. */
+  /** Features section content. */
   protected readonly c = computed(() => this.store.content().features);
 
   private readonly pageSize = 6;

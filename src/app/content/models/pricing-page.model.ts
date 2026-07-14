@@ -1,4 +1,4 @@
-/** ترويسة صفحة الباقات المستقلة (/pricing). */
+/** Header of the standalone pricing page (/pricing). */
 
 export interface PricingPageContent {
   badge: string;

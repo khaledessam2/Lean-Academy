@@ -1,9 +1,9 @@
-/** قسم الأسئلة الشائعة (يظهر في صفحة الباقات). */
+/** FAQ section (shown on the pricing page). */
 
 export interface Faq {
-  /** السؤال */
+  /** Question */
   q: string;
-  /** الإجابة */
+  /** Answer */
   a: string;
 }
 

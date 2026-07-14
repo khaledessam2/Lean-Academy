@@ -1,20 +1,20 @@
-/** قسم الواجهة الرئيسية (Hero) أعلى الصفحة. */
+/** Hero section at the top of the page. */
 export interface HeroContent {
-  /** الشارة الصغيرة فوق العنوان */
+  /** Small badge above the title */
   badge: string;
-  /** بداية العنوان الرئيسي */
+  /** Start of the main title */
   titleLead: string;
-  /** الجزء المميّز الملوّن من العنوان */
+  /** Highlighted colored part of the title */
   titleHighlight: string;
-  /** الفقرة التعريفية تحت العنوان */
+  /** Descriptive paragraph below the title */
   paragraph: string;
-  /** نص الزر الأساسي */
+  /** Primary button text */
   primaryCta: string;
-  /** نص الزر الثانوي */
+  /** Secondary button text */
   secondaryCta: string;
-  /** الملاحظة الصغيرة تحت الأزرار */
+  /** Small note below the buttons */
   note: string;
-  /** صورة الواجهة الرئيسية (مسار داخل public أو رابط من التخزين) */
+  /** Hero image (path inside public or a URL from storage) */
   image: string;
 }
 

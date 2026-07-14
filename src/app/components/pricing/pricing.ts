@@ -14,13 +14,13 @@ import { Plan } from '../../content/site-content';
 export class PricingComponent {
   private readonly store = inject(ContentStore);
 
-  /** محتوى قسم الباقات. */
+  /** Pricing plans section content. */
   protected readonly c = computed(() => this.store.content().pricing);
 
   readonly showHeader = input(true);
   protected readonly annual = signal(false);
 
-  /** سعر الباقة حسب دورة الفوترة المختارة. */
+  /** Plan price according to the selected billing cycle. */
   protected price(p: Plan): number | null {
     return this.annual() ? p.annual : p.monthly;
   }

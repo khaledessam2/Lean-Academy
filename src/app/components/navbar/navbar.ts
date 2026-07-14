@@ -12,7 +12,7 @@ import { ContentStore } from '../../content/content-store';
 export class NavbarComponent {
   private readonly store = inject(ContentStore);
 
-  /** محتوى شريط التنقّل. */
+  /** Navigation bar content. */
   protected readonly c = computed(() => this.store.content().navbar);
   protected readonly menuOpen = signal(false);
   protected readonly scrolled = signal(false);

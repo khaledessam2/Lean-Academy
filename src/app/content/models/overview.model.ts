@@ -1,11 +1,11 @@
-/** قسم النظرة العامة على النظام. */
+/** System overview section. */
 
 export interface Mode {
   title: string;
-  /** الاسم بالإنجليزية تحت العنوان */
+  /** English name below the title */
   en: string;
   desc: string;
-  /** أيقونة النمط */
+  /** Mode icon */
   icon: 'self' | 'live' | 'inperson';
 }
 
@@ -14,9 +14,9 @@ export interface OverviewContent {
   title: string;
   intro: string;
   modes: Mode[];
-  /** عنوان لافتة الذكاء الاصطناعي */
+  /** AI banner title */
   aiTitle: string;
-  /** نص لافتة الذكاء الاصطناعي */
+  /** AI banner text */
   aiText: string;
 }
 

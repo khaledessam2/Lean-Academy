@@ -1,4 +1,5 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
+import { ContentStore } from '../../content/content-store';
 
 @Component({
   selector: 'app-logo',
@@ -6,9 +7,15 @@ import { Component, input } from '@angular/core';
   templateUrl: './logo.html',
 })
 export class LogoComponent {
-  /** Colour of the book mark */
-  readonly mark = input<string>('#ed7d31');
-  /** Extra classes for the text portion */
+  private readonly store = inject(ContentStore);
+
+  /** Book icon color (used only with the default drawn logo) */
+  readonly mark = input<string>('#ec6623');
+  /** Text classes for the default drawn logo */
   readonly textClass = input<string>('text-navy-700');
+  /** Additional classes for the container */
   readonly wrapperClass = input<string>('');
+
+  /** The logo uploaded from the admin panel (if any). */
+  protected readonly brand = computed(() => this.store.content().brand);
 }

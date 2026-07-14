@@ -1,9 +1,9 @@
 import { IconName } from './icon.model';
 
-/** قسم المميزات الأساسية. */
+/** Core features section. */
 
 export interface Feature {
-  /** رقم الميزة (يظهر كبطاقة رقمية) */
+  /** Feature number (shown as a numbered card) */
   no: string;
   title: string;
   desc: string;

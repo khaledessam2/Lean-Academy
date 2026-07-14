@@ -16,31 +16,31 @@ import {
   mergeContent,
 } from './site-content';
 
-/** المفتاح الذي ننقل به المحتوى من السيرفر (SSR) إلى المتصفح لأول عرض فوري. */
+/** The key used to transfer the content from the server (SSR) to the browser for the first instant render. */
 const CONTENT_STATE_KEY = makeStateKey<Partial<Record<SectionKey, unknown>>>('site-content');
 
 /**
- * مخزن المحتوى المركزي للموقع العام.
- * يقرأ المحتوى من Supabase (لو مُعَدّ)، ويدمجه فوق المحتوى الافتراضي.
- * لو Supabase غير مُعَدّ أو حدث خطأ، يبقى الموقع يعمل بالمحتوى الافتراضي.
+ * Central content store for the public site.
+ * Reads the content from Supabase (if configured) and merges it on top of the default content.
+ * If Supabase is not configured or an error occurs, the site keeps working with the default content.
  */
 @Injectable({ providedIn: 'root' })
 export class ContentStore {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly transferState = inject(TransferState);
 
-  /** المحتوى الحالي (يبدأ بالافتراضي ثم يُحدَّث بعد الجلب). */
+  /** The current content (starts with the default, then updates after fetching). */
   readonly content = signal<SiteContent>(DEFAULT_CONTENT);
 
   private get isConfigured(): boolean {
     return !!environment.supabase.url && !!environment.supabase.anonKey;
   }
 
-  /** يُستدعى مرة واحدة عند إقلاع التطبيق (APP_INITIALIZER). */
+  /** Called once at app startup (APP_INITIALIZER). */
   async load(): Promise<void> {
     const isServer = isPlatformServer(this.platformId);
 
-    // على المتصفح: اعرض فوراً ما جلبه السيرفر وقت البناء/الطلب (لتفادي وميض الافتراضي)
+    // On the browser: immediately show what the server fetched at build/request time (to avoid a flash of the default)
     let seeded = false;
     if (!isServer && this.transferState.hasKey(CONTENT_STATE_KEY)) {
       const cached = this.transferState.get(CONTENT_STATE_KEY, null);
@@ -51,21 +51,21 @@ export class ContentStore {
       }
     }
 
-    if (!this.isConfigured) return; // لا إعداد → إبقاء الافتراضي
+    if (!this.isConfigured) return; // Not configured → keep the default
 
     const work = this.fetchAndApply(isServer);
 
-    // السيرفر: ننتظر النتيجة قبل عرض الصفحة (SSR).
-    // المتصفح: لو ما عندناش أي محتوى مبدئي ننتظر، وإلا نحدّث في الخلفية دون انتظار.
+    // Server: wait for the result before rendering the page (SSR).
+    // Browser: if we have no initial content, wait; otherwise update in the background without waiting.
     if (isServer || !seeded) {
       await work;
     } else {
-      // تحديث حيّ بعد فتح الصفحة — يضمن ظهور أحدث محتوى حتى على الموقع المرفوع (Prerendered)
+      // Live update after the page opens — ensures the latest content appears even on the deployed (prerendered) site
       work.catch(() => {});
     }
   }
 
-  /** يجلب المحتوى من Supabase ويطبّقه، ويحفظه في TransferState على السيرفر فقط. */
+  /** Fetches the content from Supabase and applies it, saving it to TransferState on the server only. */
   private async fetchAndApply(isServer: boolean): Promise<void> {
     try {
       const client = createClient(environment.supabase.url, environment.supabase.anonKey);
@@ -83,8 +83,8 @@ export class ContentStore {
         this.transferState.set(CONTENT_STATE_KEY, overrides);
       }
     } catch (err) {
-      // في حال أي خطأ، نُبقي المحتوى الحالي (المحفوظ أو الافتراضي) ولا نكسر الموقع
-      console.error('[ContentStore] تعذّر تحميل المحتوى من Supabase:', err);
+      // On any error, keep the current content (cached or default) and don't break the site
+      console.error('[ContentStore] Failed to load content from Supabase:', err);
     }
   }
 }

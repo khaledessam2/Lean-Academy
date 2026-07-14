@@ -1,9 +1,9 @@
-/** قسم التواصل + نموذج طلب العرض التجريبي. */
+/** Contact section + demo request form. */
 
 export type ContactType = 'web' | 'mail' | 'phone';
 
 export interface ContactItem {
-  /** نوع وسيلة التواصل (يحدد الأيقونة) */
+  /** Contact method type (determines the icon) */
   type: ContactType;
   label: string;
   value: string;

@@ -1,15 +1,15 @@
-/** قسم الباقات والأسعار. */
+/** Packages and pricing section. */
 
 export interface Plan {
   name: string;
   tagline: string;
-  /** السعر الشهري (null = حسب الطلب) */
+  /** Monthly price (null = on request) */
   monthly: number | null;
-  /** السعر السنوي (null = حسب الطلب) */
+  /** Annual price (null = on request) */
   annual: number | null;
-  /** هل هي الباقة المميّزة */
+  /** Whether this is the featured package */
   featured: boolean;
-  /** نص زر الدعوة للإجراء */
+  /** Call-to-action button text */
   cta: string;
   features: string[];
 }
@@ -20,15 +20,15 @@ export interface PricingContent {
   intro: string;
   monthlyLabel: string;
   annualLabel: string;
-  /** شارة التوفير بجانب زر السنوي */
+  /** Savings badge next to the annual button */
   saveBadge: string;
-  /** شارة "الأكثر شيوعاً" على الباقة المميزة */
+  /** "Most popular" badge on the featured package */
   featuredBadge: string;
-  /** لاحقة السعر عند الاختيار السنوي */
+  /** Price suffix when annual is selected */
   perYear: string;
-  /** لاحقة السعر عند الاختيار الشهري */
+  /** Price suffix when monthly is selected */
   perMonth: string;
-  /** نص السعر عند عدم وجود سعر */
+  /** Price text when there is no price */
   customPrice: string;
   footnotePre: string;
   footnoteLink: string;

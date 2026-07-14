@@ -11,6 +11,6 @@ import { ContentStore } from '../../content/content-store';
 export class ClientsComponent {
   private readonly store = inject(ContentStore);
 
-  /** محتوى قسم العملاء. */
+  /** Clients section content. */
   protected readonly c = computed(() => this.store.content().clients);
 }

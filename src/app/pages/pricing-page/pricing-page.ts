@@ -13,8 +13,8 @@ import { ContentStore } from '../../content/content-store';
 export class PricingPageComponent {
   private readonly store = inject(ContentStore);
 
-  /** ترويسة الصفحة. */
+  /** Page header. */
   protected readonly page = computed(() => this.store.content().pricingPage);
-  /** محتوى الأسئلة الشائعة. */
+  /** FAQ content. */
   protected readonly faq = computed(() => this.store.content().faq);
 }

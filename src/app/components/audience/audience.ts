@@ -12,7 +12,7 @@ import { ContentStore } from '../../content/content-store';
 export class AudienceComponent {
   private readonly store = inject(ContentStore);
 
-  /** محتوى قسم المستخدمين. */
+  /** Audience section content. */
   protected readonly c = computed(() => this.store.content().audience);
   protected readonly active = signal('trainee');
 

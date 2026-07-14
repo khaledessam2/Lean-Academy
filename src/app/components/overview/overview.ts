@@ -11,6 +11,6 @@ import { ContentStore } from '../../content/content-store';
 export class OverviewComponent {
   private readonly store = inject(ContentStore);
 
-  /** محتوى قسم النظرة العامة. */
+  /** Overview section content. */
   protected readonly c = computed(() => this.store.content().overview);
 }

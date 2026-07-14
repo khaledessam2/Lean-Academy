@@ -1,14 +1,14 @@
-/** قسم التقارير والاستبيانات. */
+/** Reports and surveys section. */
 
 export interface ChartBar {
-  /** اسم الشهر */
+  /** Month name */
   m: string;
-  /** ارتفاع العمود (نسبة مئوية 0-100) */
+  /** Bar height (percentage 0-100) */
   h: number;
 }
 
 export interface ReportStat {
-  /** القيمة مثل "81%" */
+  /** Value such as "81%" */
   value: string;
   label: string;
 }
@@ -17,13 +17,13 @@ export interface ReportsContent {
   eyebrow: string;
   title: string;
   intro: string;
-  /** عنوان بطاقة المخطط */
+  /** Chart card title */
   cardTitle: string;
-  /** السنة المعروضة على البطاقة */
+  /** Year displayed on the card */
   cardYear: string;
   stats: ReportStat[];
   bars: ChartBar[];
-  /** قائمة أنواع التقارير */
+  /** List of report types */
   items: string[];
 }
 

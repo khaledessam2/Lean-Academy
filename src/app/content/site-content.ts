@@ -1,7 +1,8 @@
 /**
- * يجمّع كل نماذج الأقسام في نموذج واحد للموقع كامل + المحتوى الافتراضي + دالة الدمج.
- * هذا الملف لا يعتمد على Angular حتى يمكن مشاركته مع تطبيق الأدمن.
+ * Combines all section models into a single model for the whole site + the default content + the merge function.
+ * This file does not depend on Angular so it can be shared with the admin app.
  */
+import { BrandContent, BRAND_DEFAULT } from './models/brand.model';
 import { HeroContent, HERO_DEFAULT } from './models/hero.model';
 import { OverviewContent, OVERVIEW_DEFAULT } from './models/overview.model';
 import { FeaturesContent, FEATURES_DEFAULT } from './models/features.model';
@@ -15,8 +16,9 @@ import { ContactContent, CONTACT_DEFAULT } from './models/contact.model';
 import { NavbarContent, NAVBAR_DEFAULT } from './models/navbar.model';
 import { FooterContent, FOOTER_DEFAULT } from './models/footer.model';
 
-/** الشكل الكامل لمحتوى الموقع. كل مفتاح = قسم = صف في جدول site_content. */
+/** The full shape of the site content. Each key = a section = a row in the site_content table. */
 export interface SiteContent {
+  brand: BrandContent;
   hero: HeroContent;
   overview: OverviewContent;
   features: FeaturesContent;
@@ -33,8 +35,9 @@ export interface SiteContent {
 
 export type SectionKey = keyof SiteContent;
 
-/** ترتيب الأقسام كما تظهر في لوحة الأدمن + عنوان عربي لكل قسم. */
+/** Section order as shown in the admin panel + an Arabic label for each section. */
 export const SECTION_ORDER: { key: SectionKey; label: string }[] = [
+  { key: 'brand', label: 'الشعار' },
   { key: 'hero', label: 'الواجهة الرئيسية' },
   { key: 'overview', label: 'نظرة عامة' },
   { key: 'features', label: 'المميزات' },
@@ -50,6 +53,7 @@ export const SECTION_ORDER: { key: SectionKey; label: string }[] = [
 ];
 
 export const DEFAULT_CONTENT: SiteContent = {
+  brand: BRAND_DEFAULT,
   hero: HERO_DEFAULT,
   overview: OVERVIEW_DEFAULT,
   features: FEATURES_DEFAULT,
@@ -65,8 +69,8 @@ export const DEFAULT_CONTENT: SiteContent = {
 };
 
 /**
- * يدمج الأقسام المخزّنة (من قاعدة البيانات) فوق المحتوى الافتراضي.
- * القسم المخزّن يستبدل القسم الافتراضي بالكامل، والأقسام الناقصة تبقى على الافتراضي.
+ * Merges the stored sections (from the database) on top of the default content.
+ * A stored section fully replaces the default section, and missing sections keep the default.
  */
 export function mergeContent(
   overrides: Partial<Record<SectionKey, unknown>> | null | undefined,
@@ -77,7 +81,7 @@ export function mergeContent(
   for (const key of Object.keys(overrides) as SectionKey[]) {
     const value = overrides[key];
     if (value != null && typeof value === 'object' && !Array.isArray(value)) {
-      // دمج على مستوى الحقول: الحقول المخزّنة تفوز، والناقصة تأخذ الافتراضي
+      // Field-level merge: stored fields win, and missing ones take the default
       bag[key] = {
         ...bag[key],
         ...(value as Record<string, unknown>),
@@ -87,7 +91,8 @@ export function mergeContent(
   return result;
 }
 
-// إعادة تصدير كل الأنواع لسهولة الاستيراد من مكان واحد
+// Re-export all types for easy import from a single place
+export * from './models/brand.model';
 export * from './models/icon.model';
 export * from './models/hero.model';
 export * from './models/overview.model';

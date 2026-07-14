@@ -18,7 +18,7 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
     ),
     provideClientHydration(withEventReplay()),
-    // حمّل محتوى الموقع من Supabase قبل عرض الصفحة (يعمل على السيرفر والمتصفح)
+    // Load the site content from Supabase before rendering the page (runs on both server and browser)
     provideAppInitializer(() => inject(ContentStore).load()),
   ],
 };

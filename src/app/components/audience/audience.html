@@ -11,7 +11,7 @@
     <div appReveal class="mt-12 flex flex-wrap justify-center gap-3">
       @for (r of c().roles; track r.key) {
         <button type="button" (click)="active.set(r.key)"
-          class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold transition-all"
+          class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold transition-all cursor-pointer"
           [class]="active() === r.key
             ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/30'
             : 'bg-white text-navy-700 ring-1 ring-cream-deep hover:bg-brand-50'">
@@ -50,7 +50,7 @@
 
           <!-- central role emblem (re-animates when the role changes) -->
           @for (r of [current()]; track r.key) {
-            <div class="animate-fade-up relative flex h-40 w-40 flex-col items-center justify-center gap-2 rounded-[2.25rem] bg-gradient-to-br from-brand-500 to-brand-700 shadow-2xl shadow-brand-500/40 ring-1 ring-white/20">
+            <div class="animate-fade-up relative flex h-40 w-40 flex-col items-center justify-center gap-2 rounded-[2.25rem] bg-brand-500 shadow-2xl shadow-brand-500/40 ring-1 ring-white/20">
               <app-icon [name]="r.icon" class="h-16 w-16 text-white" />
               <span class="px-3 text-center font-display text-sm font-extrabold text-white">{{ r.label }}</span>
             </div>

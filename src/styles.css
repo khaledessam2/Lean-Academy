@@ -3,17 +3,17 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Brand orange scale (from the Lean Academy logo) */
-  --color-brand-50: #fef5ec;
-  --color-brand-100: #fce6d3;
-  --color-brand-200: #f9caa4;
-  --color-brand-300: #f5a970;
-  --color-brand-400: #f18f47;
-  --color-brand-500: #ed7d31;
-  --color-brand-600: #dc6b1e;
-  --color-brand-700: #b7541a;
-  --color-brand-800: #92431b;
-  --color-brand-900: #763919;
+  /* Brand orange scale — anchored on "Orange Vif" #EC6623 from the brand ID */
+  --color-brand-50: #fef2ec;
+  --color-brand-100: #fcdecf;
+  --color-brand-200: #f9bd9f;
+  --color-brand-300: #f49d71;
+  --color-brand-400: #f07c42;
+  --color-brand-500: #ec6623;
+  --color-brand-600: #d75514;
+  --color-brand-700: #b04611;
+  --color-brand-800: #8a380f;
+  --color-brand-900: #6d2d0e;
 
   /* Deep navy (from the dark presentation slides) */
   --color-navy-50: #eef3f7;
