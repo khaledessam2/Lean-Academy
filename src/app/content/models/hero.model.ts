@@ -27,5 +27,5 @@ export const HERO_DEFAULT: HeroContent = {
   primaryCta: 'اطّلع على الباقات',
   secondaryCta: 'اكتشف المنصة',
   note: 'جرّب المنصة الآن بدون إدخال بيانات الدفع.',
-  image: 'Gemini_Generated_Image_prc66jprc66jprc6.png',
+  image: 'hero.webp',
 };

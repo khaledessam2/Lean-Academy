@@ -1,0 +1,20 @@
+# لين أكاديمي (Lean Academy)
+
+> منصة رقمية متكاملة لإدارة التعليم والتدريب الإلكتروني، مصمّمة للمؤسسات الحكومية والخاصة لتطوير كوادرها عبر التدريب الذاتي والمباشر والحضوري، مع فصول افتراضية وشهادات رقمية وتقارير ذكية مدعومة بالذكاء الاصطناعي.
+
+Lean Academy is an all-in-one e-learning and training management platform for government and private organizations. It supports self-paced, live, and in-person training, with virtual classrooms, online exams, verified digital certificates, and smart reporting.
+
+## الصفحات (Pages)
+
+- [الصفحة الرئيسية (Home)](https://leanacademy.me/): نظرة عامة على المنصة وأهم الميزات وأنماط التدريب.
+- [الباقات والأسعار (Pricing)](https://leanacademy.me/pricing): الباقات المتاحة وتفاصيل الاشتراك.
+
+## الميزات الأساسية (Core features)
+
+- [إدارة متكاملة للدورات وفصول افتراضية تفاعلية](https://leanacademy.me/): إدارة الدورات، لوحات تحكم للمتدرب والإدارة، ونقل المعرفة والتدريب العملي.
+- [نظام اختبارات إلكترونية وشهادات موثوقة](https://leanacademy.me/): اختبارات إلكترونية، تقييم واستبيانات، وشهادات رقمية موثوقة.
+- [أنماط التعلّم](https://leanacademy.me/): التدريب الذاتي، التدريب التفاعلي المباشر، والتدريب الحضوري ضمن منصة واحدة.
+
+## معلومات إضافية (More)
+
+- [تواصل معنا (Contact)](https://leanacademy.me/#contact): للاستفسارات وطلب عرض توضيحي.
