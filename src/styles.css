@@ -2,6 +2,36 @@
 
 @import 'tailwindcss';
 
+/* 29LT Bukra — self-hosted (converted to woff2). Used for both body and headings. */
+@font-face {
+  font-family: 'Bukra';
+  src: url('/fonts/bukra-light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Bukra';
+  src: url('/fonts/bukra-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Bukra';
+  src: url('/fonts/bukra-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Bukra';
+  src: url('/fonts/bukra-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Brand orange scale — anchored on "Orange Vif" #EC6623 from the brand ID */
   --color-brand-50: #fef2ec;
@@ -31,8 +61,8 @@
   --color-teal: #5fa3a3;
   --color-teal-dark: #4a8686;
 
-  --font-sans: 'Cairo', ui-sans-serif, system-ui, sans-serif;
-  --font-display: 'Tajawal', 'Cairo', ui-sans-serif, sans-serif;
+  --font-sans: 'Bukra', 'Cairo', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Bukra', 'Tajawal', 'Cairo', ui-sans-serif, sans-serif;
 }
 
 html {
