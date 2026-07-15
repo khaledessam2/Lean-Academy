@@ -1,0 +1,190 @@
+<!-- included / excluded cell markers (reused across the table) -->
+<ng-template #yes>
+  <span class="mx-auto inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-50 text-brand-600">
+    <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+    <span class="sr-only">متاح</span>
+  </span>
+</ng-template>
+<ng-template #no>
+  <span class="mx-auto inline-block h-0.5 w-4 rounded bg-navy-200" aria-hidden="true"></span>
+  <span class="sr-only">غير متاح</span>
+</ng-template>
+
+<section id="compare" class="bg-white py-24">
+  <div class="container-page">
+    <div appReveal class="mx-auto max-w-3xl text-center">
+      <span class="text-sm font-bold uppercase tracking-wider text-brand-600">مقارنة تفصيلية</span>
+      <h2 class="mt-3 font-display text-3xl font-extrabold text-navy-700 sm:text-4xl">
+        قارن بين الباقات
+      </h2>
+      <p class="mt-5 text-lg leading-relaxed text-navy-600">
+        استعرض المزايا كاملةً جنبًا إلى جنب لتختار الباقة الأنسب لمؤسستك.
+      </p>
+    </div>
+
+    <div appReveal class="mt-14 overflow-x-auto rounded-3xl border border-cream-deep shadow-[0_20px_60px_-40px_rgba(14,46,68,0.4)]">
+      <table class="w-full min-w-[720px] border-separate border-spacing-0 text-right">
+        <!-- plan header -->
+        <thead>
+          <tr>
+            <th class="sticky right-0 z-10 w-[34%] bg-white p-5"></th>
+            <th class="border-b border-cream-deep bg-cream p-5 text-center align-middle text-navy-700">
+              <span class="font-display text-lg font-extrabold">الباقة الأساسية</span>
+            </th>
+            <th class="rounded-t-2xl border-b border-brand-500 bg-brand-500 p-5 text-center align-middle text-white shadow-[0_-8px_30px_-12px_rgba(236,102,35,0.6)]">
+              <span class="font-display text-lg font-extrabold">الباقة الاحترافية</span>
+            </th>
+            <th class="border-b border-cream-deep bg-cream p-5 text-center align-middle text-navy-700">
+              <span class="font-display text-lg font-extrabold">باقة المؤسسات</span>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!-- المواصفات العامة -->
+          <tr>
+            <th colspan="4" class="sticky right-0 border-b border-cream-deep bg-navy-50/60 px-5 py-3 text-right font-display text-sm font-extrabold uppercase tracking-wider text-navy-700">
+              المواصفات العامة
+            </th>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">عدد المتدربين</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><span class="font-semibold text-navy-700">حتى ٢٠٠</span></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><span class="font-semibold text-navy-700">حتى ٢٠٠٠</span></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><span class="font-semibold text-navy-700">غير محدود</span></td>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">دورات التدريب الذاتي</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><span class="font-semibold text-navy-700">غير محدودة</span></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><span class="font-semibold text-navy-700">غير محدودة</span></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><span class="font-semibold text-navy-700">غير محدودة</span></td>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">المساحة السحابية</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><span class="font-semibold text-navy-700">١٠ جيجابايت</span></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><span class="font-semibold text-navy-700">٥٠ جيجابايت</span></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><span class="font-semibold text-navy-700">غير محدودة</span></td>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">لوحة تحكم للمتدرب والمدرب</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+          </tr>
+
+          <!-- المحتوى والتدريب -->
+          <tr>
+            <th colspan="4" class="sticky right-0 border-b border-cream-deep bg-navy-50/60 px-5 py-3 text-right font-display text-sm font-extrabold uppercase tracking-wider text-navy-700">
+              المحتوى والتدريب
+            </th>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">نظام اختبارات وواجبات إلكترونية</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">شهادات رقمية موثّقة</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">فصول افتراضية مباشرة وتفاعلية</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="no" /></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">أدوات الذكاء الاصطناعي للمحتوى والخطط</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="no" /></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">إدارة المعاهد والمراكز التدريبية</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="no" /></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+          </tr>
+
+          <!-- التقارير والتحليلات -->
+          <tr>
+            <th colspan="4" class="sticky right-0 border-b border-cream-deep bg-navy-50/60 px-5 py-3 text-right font-display text-sm font-extrabold uppercase tracking-wider text-navy-700">
+              التقارير والتحليلات
+            </th>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">تقارير أساسية</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">تقارير واستبيانات متقدمة</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="no" /></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">محرّك مسارات العمل والموافقات (Workflow)</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="no" /></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="no" /></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+          </tr>
+
+          <!-- التكامل والأمان -->
+          <tr>
+            <th colspan="4" class="sticky right-0 border-b border-cream-deep bg-navy-50/60 px-5 py-3 text-right font-display text-sm font-extrabold uppercase tracking-wider text-navy-700">
+              التكامل والأمان
+            </th>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">تكامل وربط إلكتروني (API)</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="no" /></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><span class="font-semibold text-navy-700">محدود</span></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">تسجيل دخول موحّد (SSO)</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="no" /></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="no" /></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">الاستضافة الداخلية (On-premise)</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="no" /></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="no" /></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+          </tr>
+
+          <!-- الدعم والخدمات -->
+          <tr>
+            <th colspan="4" class="sticky right-0 border-b border-cream-deep bg-navy-50/60 px-5 py-3 text-right font-display text-sm font-extrabold uppercase tracking-wider text-navy-700">
+              الدعم والخدمات
+            </th>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">الدعم الفني</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><span class="font-semibold text-navy-700">بريد إلكتروني</span></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><span class="font-semibold text-navy-700">أولوية ٢٤/٧</span></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><span class="font-semibold text-navy-700">مدير حساب مخصّص</span></td>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">اتفاقية مستوى الخدمة (SLA)</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="no" /></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="no" /></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="sticky right-0 z-[1] border-b border-cream-deep bg-white px-5 py-4 text-right text-sm font-medium text-navy-600">تدريب ونقل معرفة للكوادر</th>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="no" /></td>
+            <td class="border-b border-cream-deep bg-brand-50/50 px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="no" /></td>
+            <td class="border-b border-cream-deep px-5 py-4 text-center text-sm"><ng-container [ngTemplateOutlet]="yes" /></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

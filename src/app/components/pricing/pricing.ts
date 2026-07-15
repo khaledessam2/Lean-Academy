@@ -1,27 +1,21 @@
-import { Component, computed, inject, input, signal } from '@angular/core';
-import { DecimalPipe } from '@angular/common';
+import { Component, input, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { RevealDirective } from '../../directives/reveal.directive';
-import { ContentStore } from '../../content/content-store';
-import { Plan } from '../../content/site-content';
 
+/**
+ * Packages section. Fully static — the packages and prices are written directly
+ * in the template and are not loaded from the API.
+ */
 @Component({
   selector: 'app-pricing',
   standalone: true,
-  imports: [DecimalPipe, RouterLink, RevealDirective],
+  imports: [RouterLink, RevealDirective],
   templateUrl: './pricing.html',
 })
 export class PricingComponent {
-  private readonly store = inject(ContentStore);
-
-  /** Pricing plans section content. */
-  protected readonly c = computed(() => this.store.content().pricing);
-
+  /** Whether to show the section header (hidden on the standalone pricing page). */
   readonly showHeader = input(true);
-  protected readonly annual = signal(false);
 
-  /** Plan price according to the selected billing cycle. */
-  protected price(p: Plan): number | null {
-    return this.annual() ? p.annual : p.monthly;
-  }
+  /** Selected billing cycle: false = monthly, true = annual. */
+  protected readonly annual = signal(false);
 }

@@ -8,19 +8,22 @@
   <div appReveal class="container-page relative text-center">
     <span class="inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-1.5 text-sm font-semibold text-brand-700 ring-1 ring-brand-100">
       <span class="h-2 w-2 rounded-full bg-brand-500"></span>
-      {{ page().badge }}
+      الباقات والأسعار
     </span>
     <h1 class="mx-auto mt-6 max-w-2xl font-display text-4xl font-extrabold leading-[1.2] text-navy-700 sm:text-5xl">
-      {{ page().title }}
+      باقات مرنة تناسب كل مؤسسة
     </h1>
     <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-navy-600">
-      {{ page().intro }}
+      ابدأ بما يناسب حجمك اليوم، وارتقِ متى شئت. جميع الباقات تشمل الدعم الفني والتحديثات المستمرة.
     </p>
   </div>
 </section>
 
 <!-- pricing cards (header hidden — page has its own hero) -->
 <app-pricing [showHeader]="false" />
+
+<!-- detailed feature comparison table -->
+<app-pricing-comparison />
 
 <!-- FAQ -->
 <section class="bg-white py-24">

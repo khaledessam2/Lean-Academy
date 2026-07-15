@@ -3,85 +3,166 @@
   <div class="container-page relative">
     <div appReveal class="mx-auto max-w-3xl text-center">
       @if (showHeader()) {
-        <span class="text-sm font-bold uppercase tracking-wider text-brand-600">{{ c().eyebrow }}</span>
+        <span class="text-sm font-bold uppercase tracking-wider text-brand-600">الباقات والأسعار</span>
         <h2 class="mt-3 font-display text-3xl font-extrabold text-navy-700 sm:text-4xl">
-          {{ c().title }}
+          باقات مرنة تناسب كل مؤسسة
         </h2>
         <p class="mt-5 text-lg leading-relaxed text-navy-600">
-          {{ c().intro }}
+          ابدأ بما يناسب حجمك اليوم، وارتقِ متى شئت. جميع الباقات تشمل الدعم الفني والتحديثات المستمرة.
         </p>
       }
 
       <!-- billing toggle -->
       <div class="mt-8 inline-flex items-center gap-3 rounded-full bg-white p-1.5 shadow-sm ring-1 ring-cream-deep">
         <button type="button" (click)="annual.set(false)"
-          class="rounded-full px-5 py-2 text-sm font-bold transition-all"
+          class="rounded-full px-5 py-2 text-sm font-bold transition-all cursor-pointer"
           [class]="!annual() ? 'bg-brand-500 text-white' : 'text-navy-600'">
-          {{ c().monthlyLabel }}
+          شهرياً
         </button>
         <button type="button" (click)="annual.set(true)"
-          class="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-bold transition-all"
+          class="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-bold transition-all cursor-pointer"
           [class]="annual() ? 'bg-brand-500 text-white' : 'text-navy-600'">
-          {{ c().annualLabel }}
-          <span class="rounded-full bg-brand-500 px-2 py-0.5 text-[0.65rem] text-white">{{ c().saveBadge }}</span>
+          سنوياً
+          <span class="rounded-full bg-brand-500 px-2 py-0.5 text-[0.65rem] text-white">وفّر ٢٠٪</span>
         </button>
       </div>
     </div>
 
     <div appReveal class="mt-14 grid items-stretch gap-6 lg:grid-cols-3">
-      @for (p of c().plans; track p.name) {
-        <div class="relative flex flex-col rounded-3xl p-8 transition-all"
-          [class]="p.featured
-            ? 'bg-brand-500 text-white shadow-2xl shadow-brand-500/30 lg:-translate-y-4 ring-1 ring-brand-400'
-            : 'bg-white text-navy-700 ring-1 ring-cream-deep shadow-[0_20px_60px_-40px_rgba(14,46,68,0.4)]'">
 
-          @if (p.featured) {
-            <span class="absolute -top-3 right-8 rounded-full bg-white px-4 py-1 text-xs font-bold text-brand-600 shadow-lg">
-              {{ c().featuredBadge }}
-            </span>
-          }
-
-          <h3 class="font-display text-xl font-extrabold">{{ p.name }}</h3>
-          <p class="mt-1 text-sm" [class]="p.featured ? 'text-white/85' : 'text-navy-500'">{{ p.tagline }}</p>
-
-          <div class="mt-6 flex items-end gap-2">
-            @if (price(p) !== null) {
-              <span class="font-display text-4xl font-extrabold">{{ price(p) | number }}</span>
-              <span class="pb-1 text-sm" [class]="p.featured ? 'text-white/85' : 'text-navy-500'">
-                {{ annual() ? c().perYear : c().perMonth }}
-              </span>
-            } @else {
-              <span class="font-display text-3xl font-extrabold">{{ c().customPrice }}</span>
-            }
-          </div>
-
-          <a [routerLink]="['/pricing']" fragment="contact"
-             class="mt-6 block rounded-full px-6 py-3.5 text-center font-bold transition-all"
-             [class]="p.featured
-               ? 'bg-white text-brand-600 hover:bg-brand-50'
-               : 'bg-brand-500 text-white hover:bg-brand-600'">
-            {{ p.cta }}
-          </a>
-
-          <ul class="mt-8 space-y-3.5 text-lg">
-            @for (f of p.features; track f) {
-              <li class="flex items-start gap-3">
-                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
-                  [class]="p.featured ? 'bg-white/25 text-white' : 'bg-brand-50 text-brand-600'">
-                  <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                </span>
-                <span [class]="p.featured ? 'text-white/90' : 'text-navy-600'">{{ f }}</span>
-              </li>
-            }
-          </ul>
+      <!-- الباقة الأساسية -->
+      <div class="relative flex flex-col rounded-3xl bg-white p-8 text-navy-700 ring-1 ring-cream-deep shadow-[0_20px_60px_-40px_rgba(14,46,68,0.4)] transition-all">
+        <h3 class="font-display text-xl font-extrabold">الباقة الأساسية</h3>
+        <p class="mt-1 text-sm text-navy-500">للمراكز الناشئة والفرق الصغيرة</p>
+        <div class="mt-6 flex items-end gap-2">
+          <span class="font-display text-4xl font-extrabold">{{ annual() ? '9,590' : '999' }}</span>
+          <span class="pb-1 text-sm text-navy-500">{{ annual() ? 'ر.س / سنوياً' : 'ر.س / شهرياً' }}</span>
         </div>
-      }
+        <a [routerLink]="['/pricing']" fragment="contact"
+           class="mt-6 block rounded-full bg-brand-500 px-6 py-3.5 text-center font-bold text-white transition-all hover:bg-brand-600">
+          ابدأ الآن
+        </a>
+        <ul class="mt-8 space-y-3.5 text-lg">
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-navy-600">حتى ٢٠٠ متدرب</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-navy-600">دورات تدريب ذاتي غير محدودة</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-navy-600">لوحة تحكم للمتدرب والمدرب</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-navy-600">نظام اختبارات وواجبات إلكترونية</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-navy-600">شهادات رقمية موثّقة</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-navy-600">دعم فني عبر البريد الإلكتروني</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- الباقة الاحترافية (المميّزة) -->
+      <div class="relative flex flex-col rounded-3xl bg-brand-500 p-8 text-white shadow-2xl shadow-brand-500/30 ring-1 ring-brand-400 transition-all lg:-translate-y-4">
+        <span class="absolute -top-3 right-8 rounded-full bg-white px-4 py-1 text-xs font-bold text-brand-600 shadow-lg">الأكثر شيوعاً</span>
+        <h3 class="font-display text-xl font-extrabold">الباقة الاحترافية</h3>
+        <p class="mt-1 text-sm text-white/85">للمعاهد والجهات متوسطة الحجم</p>
+        <div class="mt-6 flex items-end gap-2">
+          <span class="font-display text-4xl font-extrabold">{{ annual() ? '23,990' : '2,499' }}</span>
+          <span class="pb-1 text-sm text-white/85">{{ annual() ? 'ر.س / سنوياً' : 'ر.س / شهرياً' }}</span>
+        </div>
+        <a [routerLink]="['/pricing']" fragment="contact"
+           class="mt-6 block rounded-full bg-white px-6 py-3.5 text-center font-bold text-brand-600 transition-all hover:bg-brand-50">
+          اطلب تجربة
+        </a>
+        <ul class="mt-8 space-y-3.5 text-lg">
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/25 text-white"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-white/90">حتى ٢٠٠٠ متدرب</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/25 text-white"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-white/90">كل مزايا الباقة الأساسية</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/25 text-white"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-white/90">فصول افتراضية مباشرة وتفاعلية</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/25 text-white"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-white/90">أدوات الذكاء الاصطناعي للمحتوى والخطط</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/25 text-white"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-white/90">تقارير واستبيانات متقدمة</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/25 text-white"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-white/90">إدارة المعاهد والمراكز التدريبية</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/25 text-white"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-white/90">دعم فني ذو أولوية على مدار الساعة</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- باقة المؤسسات -->
+      <div class="relative flex flex-col rounded-3xl bg-white p-8 text-navy-700 ring-1 ring-cream-deep shadow-[0_20px_60px_-40px_rgba(14,46,68,0.4)] transition-all">
+        <h3 class="font-display text-xl font-extrabold">باقة المؤسسات</h3>
+        <p class="mt-1 text-sm text-navy-500">للجهات الحكومية والمؤسسات الكبرى</p>
+        <div class="mt-6 flex items-end gap-2">
+          <span class="font-display text-3xl font-extrabold">حسب الطلب</span>
+        </div>
+        <a [routerLink]="['/pricing']" fragment="contact"
+           class="mt-6 block rounded-full bg-brand-500 px-6 py-3.5 text-center font-bold text-white transition-all hover:bg-brand-600">
+          تواصل معنا
+        </a>
+        <ul class="mt-8 space-y-3.5 text-lg">
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-navy-600">عدد متدربين غير محدود</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-navy-600">كل مزايا الباقة الاحترافية</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-navy-600">محرّك مسارات العمل والموافقات (Workflow)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-navy-600">تكامل وربط إلكتروني وتسجيل دخول موحّد (SSO)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-navy-600">خيار الاستضافة الداخلية (On-premise)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-navy-600">مدير حساب مخصّص واتفاقية مستوى خدمة (SLA)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600"><svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+            <span class="text-navy-600">تدريب ونقل معرفة للكوادر</span>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <p class="mt-10 text-center text-sm text-navy-500">
-      {{ c().footnotePre }}
-      <a [routerLink]="['/pricing']" fragment="contact" class="font-bold text-brand-600 hover:underline">{{ c().footnoteLink }}</a>
-      {{ c().footnotePost }}
+      هل تحتاج تكاملاً خاصاً أو استضافة داخلية؟
+      <a [routerLink]="['/pricing']" fragment="contact" class="font-bold text-brand-600 hover:underline">تواصل مع فريق المبيعات</a>
+      للحصول على عرض مخصّص.
     </p>
   </div>
 </section>

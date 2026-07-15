@@ -1,11 +1,12 @@
 import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AccreditationComponent } from '../accreditation/accreditation';
 import { ContentStore } from '../../content/content-store';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, AccreditationComponent],
   templateUrl: './hero.html',
 })
 export class HeroComponent {
