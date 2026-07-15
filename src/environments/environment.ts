@@ -2,9 +2,9 @@ export const environment = {
   production: true,
   emailjs: {
     // From the EmailJS dashboard: https://dashboard.emailjs.com
-    serviceId: 'service_ftqyoj7', // Email Services
-    templateId: 'template_9al12in', // Email Templates
-    publicKey: 'Hmsi0NM1CYlsQZA1g', // Account → General → API Keys
+    serviceId: 'service_3velf2g', // Email Services
+    templateId: 'template_k01w4sb', // Email Templates
+    publicKey: 'SNM7SE-QzayAPRx4F', // Account → General → API Keys
   },
   supabase: {
     // From Supabase: Project Settings → API
