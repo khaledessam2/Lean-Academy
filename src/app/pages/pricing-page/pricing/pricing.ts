@@ -1,6 +1,6 @@
 import { Component, input, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { RevealDirective } from '../../directives/reveal.directive';
+import { RevealDirective } from '../../../directives/reveal.directive';
 
 /**
  * Packages section. Fully static — the packages and prices are written directly

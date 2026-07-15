@@ -1,6 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
-import { PricingComponent } from '../../components/pricing/pricing';
-import { PricingComparisonComponent } from '../../components/pricing-comparison/pricing-comparison';
+import { PricingComponent } from './pricing/pricing';
+import { PricingComparisonComponent } from './pricing-comparison/pricing-comparison';
 import { ContactComponent } from '../../components/contact/contact';
 import { RevealDirective } from '../../directives/reveal.directive';
 import { ContentStore } from '../../content/content-store';

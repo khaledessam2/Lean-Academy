@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
-import { RevealDirective } from '../../directives/reveal.directive';
-
+import { RevealDirective } from '../../../directives/reveal.directive';
+;
 /**
  * Static feature-by-feature comparison table between the packages.
  * The content is written directly in the template (not loaded from the API).
