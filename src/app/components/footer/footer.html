@@ -3,7 +3,7 @@
     <div class="grid gap-10 lg:grid-cols-4">
       <div class="lg:col-span-1">
         <app-logo mark="#ec6623" textClass="text-navy-700" />
-        <p class="mt-4 max-w-xs text-sm leading-relaxed text-navy-600">
+        <p class="mt-4 max-w-xs text-lg leading-relaxed text-navy-600">
           {{ c().blurb }}
         </p>
         <div class="mt-6 flex gap-3">
@@ -26,7 +26,7 @@
       @for (col of c().columns; track col.title) {
         <div>
           <h4 class="font-display font-bold text-navy-700">{{ col.title }}</h4>
-          <ul class="mt-4 space-y-2.5 text-sm">
+          <ul class="mt-4 space-y-2.5 text-lg">
             @for (l of col.links; track l.label) {
               <li>
                 <a [routerLink]="[l.route]" [fragment]="l.fragment" class="text-navy-600 transition-colors hover:text-brand-600">{{ l.label }}</a>

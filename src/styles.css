@@ -2,31 +2,38 @@
 
 @import 'tailwindcss';
 
-/* 29LT Bukra — self-hosted (converted to woff2). Used for both body and headings. */
+/* IBM Plex Sans Arabic — self-hosted (converted to woff2). Used for body and headings. */
 @font-face {
-  font-family: 'Bukra';
-  src: url('/fonts/bukra-light.woff2') format('woff2');
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('/fonts/ibmplex-light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Bukra';
-  src: url('/fonts/bukra-regular.woff2') format('woff2');
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('/fonts/ibmplex-regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Bukra';
-  src: url('/fonts/bukra-medium.woff2') format('woff2');
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('/fonts/ibmplex-medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Bukra';
-  src: url('/fonts/bukra-bold.woff2') format('woff2');
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('/fonts/ibmplex-semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('/fonts/ibmplex-bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -61,8 +68,8 @@
   --color-teal: #5fa3a3;
   --color-teal-dark: #4a8686;
 
-  --font-sans: 'Bukra', 'Cairo', ui-sans-serif, system-ui, sans-serif;
-  --font-display: 'Bukra', 'Tajawal', 'Cairo', ui-sans-serif, sans-serif;
+  --font-sans: 'IBM Plex Sans Arabic', 'Cairo', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'IBM Plex Sans Arabic', 'Tajawal', 'Cairo', ui-sans-serif, sans-serif;
 }
 
 html {

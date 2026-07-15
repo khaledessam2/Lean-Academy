@@ -25,14 +25,14 @@
     <div appReveal revealFrom="zoom" class="mt-10 grid items-center gap-10 rounded-[2rem] bg-white p-6 shadow-[0_20px_60px_-40px_rgba(14,46,68,0.4)] ring-1 ring-cream-deep lg:grid-cols-2 lg:p-10">
       <div class="animate-fade-up" [attr.key]="current().key">
         <h3 class="font-display text-2xl font-extrabold text-navy-700">{{ current().headline }}</h3>
-        <p class="mt-3 leading-relaxed text-navy-600">{{ current().desc }}</p>
+        <p class="mt-3 text-lg leading-relaxed text-navy-600">{{ current().desc }}</p>
         <ul class="mt-6 space-y-3">
           @for (p of current().points; track p) {
             <li class="flex items-start gap-3 text-navy-600">
               <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600">
                 <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               </span>
-              <span class="leading-relaxed">{{ p }}</span>
+              <span class="text-lg leading-relaxed">{{ p }}</span>
             </li>
           }
         </ul>
